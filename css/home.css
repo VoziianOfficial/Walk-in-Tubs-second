@@ -1,0 +1,613 @@
+/* =========================
+   HOME PAGE
+========================= */
+
+/* =========================
+   HERO
+========================= */
+.hero-section {
+    padding-top: clamp(2rem, 3vw, 3rem);
+    overflow: clip;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: min(72%, 760px);
+    background:
+        radial-gradient(circle at 12% 18%, rgba(196, 111, 60, 0.08), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(196, 111, 60, 0.07), transparent 20%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.56) 0%, rgba(247, 243, 238, 0) 100%);
+    pointer-events: none;
+}
+
+.hero-section__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+}
+
+.hero-section__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 1.35rem;
+    align-content: center;
+    padding-block: clamp(1rem, 2vw, 2rem);
+}
+
+.hero-section__content h1 {
+    max-width: 11ch;
+    text-wrap: balance;
+}
+
+.hero-section__lead {
+    max-width: 62ch;
+    font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.14rem);
+    line-height: 1.75;
+}
+
+.hero-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    padding-top: 0.25rem;
+}
+
+.hero-section__highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding-top: 0.45rem;
+}
+
+.hero-section__highlights li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 42px;
+    padding: 0.65rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(31, 29, 26, 0.08);
+    box-shadow: var(--shadow-xs);
+    color: var(--color-text-soft);
+    font-size: 0.93rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.hero-section__highlights i {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+}
+
+.hero-section__visual {
+    position: relative;
+    min-width: 0;
+    min-height: 620px;
+    display: grid;
+    align-items: center;
+}
+
+.hero-panel--main {
+    position: relative;
+    min-height: 620px;
+    height: 100%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-panel--main::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 46%;
+    background: linear-gradient(180deg, rgba(24, 22, 19, 0) 0%, rgba(24, 22, 19, 0.18) 100%);
+    pointer-events: none;
+}
+
+.hero-panel--main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 1.2s ease;
+}
+
+.hero-section__visual:hover .hero-panel--main img {
+    transform: scale(1.05);
+}
+
+.hero-floating-card {
+    position: absolute;
+    z-index: 2;
+    width: min(100%, 260px);
+    padding: 1rem 1rem 1.1rem;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(31, 29, 26, 0.08);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(14px);
+    transition:
+        transform var(--transition-slow),
+        box-shadow var(--transition-base);
+}
+
+.hero-floating-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-floating-card--top {
+    top: 1.35rem;
+    right: -0.5rem;
+}
+
+.hero-floating-card--bottom {
+    left: -0.5rem;
+    bottom: 1.35rem;
+}
+
+.hero-floating-card__label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.hero-floating-card strong {
+    display: block;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+}
+
+/* =========================
+   BENEFITS
+========================= */
+.benefits-section {
+    padding-top: clamp(2.5rem, 3vw, 3.5rem);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.35rem;
+}
+
+.info-card {
+    display: grid;
+    align-content: start;
+    gap: 0.4rem;
+    min-height: 100%;
+}
+
+.info-card p {
+    max-width: 32ch;
+}
+
+/* =========================
+   SERVICES PREVIEW
+========================= */
+.services-preview {
+    z-index: 1;
+}
+
+.services-preview__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.35rem;
+}
+
+.service-card {
+    display: grid;
+    align-content: start;
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(196, 111, 60, 0.2), transparent 72%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card p {
+    max-width: 34ch;
+}
+
+/* =========================
+   PROCESS
+========================= */
+.process-section {
+    z-index: 1;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.35rem;
+}
+
+.step-card {
+    display: grid;
+    align-content: start;
+    min-height: 100%;
+}
+
+.step-card::after {
+    content: "";
+    position: absolute;
+    inset: auto 1.5rem 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(196, 111, 60, 0.18), transparent 90%);
+}
+
+/* =========================
+   REASSURANCE
+========================= */
+.reassurance-section {
+    overflow: clip;
+}
+
+.reassurance-section::before {
+    content: "";
+    position: absolute;
+    inset: auto auto 0 -4%;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196, 111, 60, 0.07), transparent 62%);
+    pointer-events: none;
+}
+
+.reassurance-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+}
+
+.reassurance-content {
+    display: grid;
+    gap: 1.15rem;
+    align-content: start;
+}
+
+.reassurance-content p {
+    max-width: 62ch;
+}
+
+.reassurance-cards {
+    display: grid;
+    gap: 1rem;
+}
+
+.reassurance-cards .stat-card:nth-child(2) {
+    margin-left: 1.25rem;
+}
+
+.reassurance-cards .stat-card:nth-child(3) {
+    margin-left: 2.5rem;
+}
+
+/* =========================
+   COVERAGE
+========================= */
+.coverage-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: 1.35rem;
+    align-items: stretch;
+}
+
+.coverage-side-card {
+    display: grid;
+    align-content: start;
+    gap: 0.85rem;
+}
+
+.coverage-side-card .button {
+    margin-top: 0.25rem;
+}
+
+/* =========================
+   CTA PANEL
+========================= */
+.cta-section {
+    padding-top: clamp(3rem, 4vw, 4rem);
+}
+
+.cta-panel {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    background:
+        radial-gradient(circle at top right, rgba(196, 111, 60, 0.12), transparent 28%),
+        linear-gradient(135deg, #1d1915 0%, #2a241e 100%);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-panel::before {
+    content: "";
+    position: absolute;
+    inset: auto auto -3rem -3rem;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
+    pointer-events: none;
+}
+
+.cta-panel__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.8rem;
+}
+
+.cta-panel__content .section-kicker,
+.cta-panel__content h2,
+.cta-panel__content p {
+    color: #fff;
+}
+
+.cta-panel__content .section-kicker {
+    opacity: 0.92;
+}
+
+.cta-panel__content p {
+    max-width: 58ch;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.cta-panel__actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    justify-content: flex-end;
+}
+
+/* =========================
+   FAQ
+========================= */
+.faq-section {
+    padding-bottom: clamp(4rem, 5vw, 5rem);
+}
+
+.faq-list {
+    max-width: 920px;
+}
+
+/* =========================
+   HOME PAGE MOTION POLISH
+========================= */
+.hero-section__content>*,
+.hero-section__visual>*,
+.section-heading,
+.info-card,
+.service-card,
+.step-card,
+.stat-card,
+.coverage-side-card,
+.cta-panel,
+.faq-item {
+    will-change: transform, opacity;
+}
+
+.hero-section__highlights li,
+.hero-floating-card,
+.service-card,
+.info-card,
+.step-card,
+.stat-card {
+    transition:
+        transform var(--transition-base),
+        box-shadow var(--transition-base),
+        border-color var(--transition-base),
+        background-color var(--transition-base);
+}
+
+.hero-section__highlights li:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.hero-section__highlights li:hover i {
+    transform: scale(1.08);
+}
+
+.hero-section__highlights i {
+    transition: transform var(--transition-base), color var(--transition-base);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1180px) {
+    .hero-section__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-section__content h1 {
+        max-width: 14ch;
+    }
+
+    .hero-section__visual {
+        min-height: 560px;
+    }
+
+    .hero-panel--main {
+        min-height: 560px;
+    }
+
+    .hero-floating-card--top {
+        right: 1rem;
+    }
+
+    .hero-floating-card--bottom {
+        left: 1rem;
+    }
+
+    .reassurance-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .reassurance-cards .stat-card:nth-child(2),
+    .reassurance-cards .stat-card:nth-child(3) {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .benefits-grid,
+    .services-preview__grid,
+    .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .coverage-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-panel {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .cta-panel__actions {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 1.5rem;
+    }
+
+    .hero-section__grid {
+        gap: 1.5rem;
+    }
+
+    .hero-section__content {
+        gap: 1.1rem;
+    }
+
+    .hero-section__content h1 {
+        max-width: 100%;
+    }
+
+    .hero-section__lead {
+        max-width: 100%;
+    }
+
+    .hero-section__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-section__actions .button {
+        width: 100%;
+    }
+
+    .hero-section__highlights {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section__visual {
+        min-height: auto;
+    }
+
+    .hero-panel--main {
+        min-height: 420px;
+    }
+
+    .hero-floating-card {
+        position: static;
+        width: 100%;
+    }
+
+    .hero-section__visual {
+        gap: 1rem;
+    }
+
+    .benefits-grid,
+    .services-preview__grid,
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reassurance-layout,
+    .coverage-layout {
+        gap: 1rem;
+    }
+
+    .cta-panel__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cta-panel__actions .button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    .hero-panel--main {
+        min-height: 340px;
+        border-radius: var(--radius-lg);
+    }
+
+    .hero-floating-card {
+        padding: 0.95rem;
+        border-radius: var(--radius-md);
+    }
+
+    .hero-floating-card strong {
+        font-size: 0.95rem;
+    }
+
+    .hero-section__highlights li {
+        min-height: auto;
+        align-items: flex-start;
+    }
+
+    .coverage-side-card {
+        padding: 1.15rem;
+    }
+
+    .cta-panel {
+        border-radius: var(--radius-lg);
+    }
+}
+
+.hero-section__visual.is-enhanced .hero-panel--main img,
+.coverage-map-card.is-enhanced {
+    transform: translateZ(0);
+}
