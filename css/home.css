@@ -342,11 +342,14 @@ html[data-theme="dark"] .hero-section {
 
 .rail-card {
     position: relative;
+    display: block;
     min-height: 460px;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 255, 255, 0.12);
+    color: inherit;
+    text-decoration: none;
 }
 
 .rail-card img {
@@ -405,9 +408,14 @@ html[data-theme="dark"] .hero-section {
 
 .rail-card__content h3 {
     color: #fff;
-    max-width: 16ch;
+    max-width: 24ch;
     line-height: 1.35;
-    text-wrap: balance;
+    text-wrap: pretty;
+    min-height: calc(1.35em * 3);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* =========================

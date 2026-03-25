@@ -497,8 +497,8 @@ html[data-theme="dark"] .contact-hero {
     padding: clamp(1.45rem, 3vw, 2.1rem);
     border-radius: 34px;
     background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 24%),
-        var(--gradient-panel);
+        linear-gradient(135deg, rgba(10, 12, 15, 0.86) 0%, rgba(10, 12, 15, 0.62) 45%, rgba(10, 12, 15, 0.42) 100%),
+        url("../assets/images/contact/contact-footet-img.jpg") center / cover no-repeat;
     border: 1px solid var(--line);
     box-shadow: var(--shadow-md), var(--shadow-inset);
 }
