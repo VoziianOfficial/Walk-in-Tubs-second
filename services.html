@@ -77,84 +77,187 @@
             </div>
         </header>
 
-        <aside class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Mobile navigation">
-            <div class="mobile-menu__backdrop"></div>
+<aside class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="mobile-menu__backdrop"></div>
 
-            <div class="mobile-menu__panel">
-                <div class="mobile-menu__top">
-                    <a class="site-logo site-logo--menu" href="index.html" aria-label="Walk-in Tub Compare home">
-                        <i class="fa-solid fa-shower"></i>
-                        <span class="site-logo__text">
-                            <span class="site-logo__title">Walk-in Tub Compare</span>
-                            <span class="site-logo__subtitle">Independent USA Matching Platform</span>
+    <div class="mobile-menu__panel">
+        <div class="mobile-menu__top">
+            <a class="site-logo site-logo--menu" href="index.html" aria-label="Walk-in Tub Compare home">
+                <span class="site-logo__mark" aria-hidden="true">
+                    <i class="fa-solid fa-shower"></i>
+                </span>
+                <span class="site-logo__text">
+                    <span class="site-logo__title">Walk-in Tub Compare</span>
+                    <span class="site-logo__subtitle">Independent USA Matching Platform</span>
+                </span>
+            </a>
+                <button class="mobile-menu__close" type="button" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+        </div>
+
+        <div class="mobile-menu__scroll">
+            <nav class="mobile-menu__nav" aria-label="Mobile primary navigation">
+                <span class="mobile-menu__section-title">Navigation</span>
+
+                <ul class="mobile-menu__nav-list">
+                    <li>
+                        <a href="index.html">
+                            <span class="mobile-menu__nav-icon"><i class="fa-solid fa-house"></i></span>
+                            <span class="mobile-menu__nav-text">
+                                <strong>Home</strong>
+                                <small>Main overview</small>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            <span class="mobile-menu__nav-icon"><i class="fa-solid fa-bath"></i></span>
+                            <span class="mobile-menu__nav-text">
+                                <strong>Services</strong>
+                                <small>All categories</small>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            <span class="mobile-menu__nav-icon"><i class="fa-solid fa-circle-info"></i></span>
+                            <span class="mobile-menu__nav-text">
+                                <strong>About Us</strong>
+                                <small>Platform story</small>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            <span class="mobile-menu__nav-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
+                            <span class="mobile-menu__nav-text">
+                                <strong>Contact</strong>
+                                <small>Quotes and support</small>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <section class="mobile-menu__group mobile-menu__group--featured" aria-label="Most popular services">
+                <div class="mobile-menu__group-head">
+                    <span class="mobile-menu__section-title">Most Popular</span>
+                    <span class="mobile-menu__section-note">Quick access</span>
+                </div>
+
+                <div class="mobile-menu__featured-grid">
+                    <a class="mobile-menu__featured-card" href="walk-in-tub-installation.html">
+                        <span class="mobile-menu__featured-icon"><i class="fa-solid fa-bath"></i></span>
+                        <strong>Installation</strong>
+                        <span>New setup comparison path</span>
+                    </a>
+
+                    <a class="mobile-menu__featured-card" href="walk-in-tub-accessibility-upgrades.html">
+                        <span class="mobile-menu__featured-icon"><i class="fa-solid fa-shield-heart"></i></span>
+                        <strong>Accessibility Upgrades</strong>
+                        <span>Support and comfort options</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="mobile-menu__group" aria-label="All services">
+                <div class="mobile-menu__group-head">
+                    <span class="mobile-menu__section-title">All Services</span>
+                    <span class="mobile-menu__section-note">Browse categories</span>
+                </div>
+
+                <div class="mobile-menu__service-list">
+                    <a href="walk-in-tub-installation.html">
+                        <i class="fa-solid fa-bath"></i>
+                        <span>Installation</span>
+                    </a>
+                    <a href="walk-in-tub-replacement.html">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                        <span>Replacement</span>
+                    </a>
+                    <a href="walk-in-tub-repair.html">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span>Repair</span>
+                    </a>
+                    <a href="walk-in-tub-accessibility-upgrades.html">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        <span>Accessibility Upgrades</span>
+                    </a>
+                    <a href="walk-in-tub-maintenance.html">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Maintenance</span>
+                    </a>
+                    <a href="walk-in-tub-consultation.html">
+                        <i class="fa-solid fa-comments"></i>
+                        <span>Consultation</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="mobile-menu__group" aria-label="Contact details">
+                <div class="mobile-menu__group-head">
+                    <span class="mobile-menu__section-title">Contact</span>
+                    <span class="mobile-menu__section-note">Fast access</span>
+                </div>
+
+                <div class="mobile-menu__contact-stack">
+                    <a class="mobile-menu__contact-card" href="tel:+18005550199">
+                        <span class="mobile-menu__contact-icon"><i class="fa-solid fa-phone-volume"></i></span>
+                        <span class="mobile-menu__contact-text">
+                            <strong>(800) 555-0199</strong>
+                            <small>Tap to call now</small>
                         </span>
                     </a>
 
-                    <button class="mobile-menu__close" type="button" aria-label="Close menu">
-                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-                    </button>
-                </div>
+                    <a class="mobile-menu__contact-card" href="mailto:hello@walkintubcompare.com">
+                        <span class="mobile-menu__contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                        <span class="mobile-menu__contact-text">
+                            <strong>hello@walkintubcompare.com</strong>
+                            <small>Email contact</small>
+                        </span>
+                    </a>
 
-                <div class="mobile-menu__body">
-                    <nav class="mobile-menu__nav" aria-label="Mobile primary navigation">
-                        <ul class="mobile-menu__list">
-                            <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
-                            <li><a href="services.html" aria-current="page"><i
-                                        class="fa-solid fa-bath"></i><span>Services</span></a></li>
-                            <li><a href="about.html"><i class="fa-solid fa-shield-heart"></i><span>About Us</span></a>
-                            </li>
-                            <li><a href="contact.html"><i
-                                        class="fa-solid fa-envelope-open-text"></i><span>Contact</span></a></li>
-                        </ul>
-                    </nav>
-
-                    <div class="mobile-menu__meta">
-                        <div class="mobile-menu__card">
-                            <span class="mobile-menu__eyebrow">Service Categories</span>
-                            <ul class="mobile-menu__links">
-                                <li><a href="walk-in-tub-installation.html">Installation</a></li>
-                                <li><a href="walk-in-tub-replacement.html">Replacement</a></li>
-                                <li><a href="walk-in-tub-repair.html">Repair</a></li>
-                                <li><a href="walk-in-tub-accessibility-upgrades.html">Accessibility Upgrades</a></li>
-                                <li><a href="walk-in-tub-maintenance.html">Maintenance</a></li>
-                                <li><a href="walk-in-tub-consultation.html">Consultation</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="mobile-menu__card">
-                            <span class="mobile-menu__eyebrow">Legal</span>
-                            <ul class="mobile-menu__links">
-                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="terms-of-service.html">Terms of Service</a></li>
-                                <li><a href="cookie-policy.html">Cookie Policy</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="mobile-menu__card">
-                            <span class="mobile-menu__eyebrow">Contact</span>
-                            <ul class="mobile-menu__links">
-                                <li><a href="tel:+18005550199">(800) 555-0199</a></li>
-                                <li><a href="mailto:hello@walkintubcompare.com">hello@walkintubcompare.com</a></li>
-                                <li><a href="contact.html">Request Quotes</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="mobile-menu__actions">
-                        <button class="button button--secondary button--block" type="button" data-theme-toggle
-                            aria-label="Switch theme">
-                            <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
-                            <span>Switch Theme</span>
-                        </button>
-
-                        <a class="button button--primary button--block" href="tel:+18005550199">
-                            <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
-                            <span>Go to Form</span>
-                        </a>
+                    <div class="mobile-menu__contact-card mobile-menu__contact-card--static">
+                        <span class="mobile-menu__contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <span class="mobile-menu__contact-text">
+                            <strong>Service Area: USA</strong>
+                            <small>Independent comparison platform</small>
+                        </span>
                     </div>
                 </div>
-            </div>
-        </aside>
+            </section>
+
+            <section class="mobile-menu__group" aria-label="Legal links">
+                <div class="mobile-menu__group-head">
+                    <span class="mobile-menu__section-title">Legal</span>
+                    <span class="mobile-menu__section-note">Policies</span>
+                </div>
+
+                <div class="mobile-menu__legal-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                </div>
+            </section>
+        </div>
+
+        <div class="mobile-menu__bottom">
+            <a class="button button--primary button--block" href="tel:+18005550199">
+                <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
+                <span>Call Now</span>
+            </a>
+
+            <a class="button button--ghost-dark button--block" href="contact.html">
+                <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
+                <span>Request Quotes</span>
+            </a>
+        </div>
+    </div>
+</aside>
 
         <main id="main-content">
             <!-- HERO -->
