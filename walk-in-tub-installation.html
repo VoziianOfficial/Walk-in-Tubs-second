@@ -24,36 +24,43 @@
 
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <header class="site-header">
-        <div class="container site-header__inner header-inner">
+    <header class="site-header" id="site-header">
+        <div class="container">
+            <div class="site-header__inner">
+                <a class="site-logo" href="index.html" aria-label="Elvion Bath home">
+                    <i class="fa-solid fa-bath"></i>
+                    <span class="site-logo__text">
+                        <span class="site-logo__title">Elvion Bath</span>
 
-            <div class="logo">
-                <img src="assets/images/global/logo-mark.svg" alt="" aria-hidden="true" />
-                <span>Elvion Bath</span>
-            </div>
-
-            <nav class="nav">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-
-            <div class="header-actions">
-                <button class="theme-toggle" data-theme-toggle>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                </button>
-
-                <a href="contact.html#contact-form-section" class="call-btn">
-                    <i class="fa-solid fa-file-signature"></i>
-                    Go to Form
+                    </span>
                 </a>
 
-                <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                <nav class="site-nav" aria-label="Primary navigation">
+                    <ul class="site-nav__list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html" aria-current="page">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="site-header__actions">
+                    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+                        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
+                        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
+                    </button>
+
+                    <a class="header-phone header-phone--mobile" href="tel:+18005550199" aria-label="Call now">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </a>
+
+                    <a class="button button--primary header-cta header-cta--desktop" href="contact.html#contact-form-section"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span>Get Quotes</span></a>
+
+                    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
                         <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
                     </button>
+                </div>
             </div>
-
         </div>
     </header>
 
@@ -205,7 +212,7 @@
                         <span class="mobile-menu__contact-icon"><i class="fa-solid fa-location-dot"></i></span>
                         <span class="mobile-menu__contact-text">
                             <strong>Service Area: USA</strong>
-                            <small>Independent comparison platform</small>
+                            <small>Independent matching platform</small>
                         </span>
                     </div>
                 </div>
@@ -239,195 +246,296 @@
     </div>
 </aside>
 
-    <section class="service-hero" id="main-content">
+        <main id="main-content">
+        <section class="service-hero section">
+            <div class="container-wide">
+                <div class="service-hero__layout">
+                    <div class="service-hero__visual" data-reveal="fade-right">
+                        <div class="service-hero__panel">
+                            <img src="assets/images/services/services-hero-said.jpg" alt="Walk-in tub installation visual" />
+                        </div>
+                        <div class="service-hero__card service-hero__card--top">
+                            <span>Installation context</span>
+                            <strong>Used when the project begins from a new setup and homeowners need clear provider comparisons.</strong>
+                        </div>
+                    </div>
 
-        <div class="container service-hero-grid">
+                    <div class="service-hero__content" data-reveal="fade-left">
+                        <span class="section-kicker">Installation Matching</span>
+                        <h1>Compare Walk-in Tub Installation Options by Provider</h1>
+                        <p class="service-hero__lead">
+                            Explore installation-focused provider options, compare quote pathways, and choose a direction based on bathroom fit, accessibility priorities, and project scope.
+                        </p>
 
-            <div class="service-hero-content">
-                <span class="tag">Installation Matching</span>
+                        <div class="service-hero__actions">
+                            <a class="button button--primary" href="contact.html"><i class="fa-solid fa-file-signature"></i><span>Request Quotes</span></a>
+                            <a class="button button--ghost" href="tel:+18005550199"><i class="fa-solid fa-phone-volume"></i><span>Call Now</span></a>
+                        </div>
 
-                <h1>Compare Walk-in Tub Installation Providers</h1>
-
-                <p>
-                    Explore installation options, compare local providers, and request quotes
-                    from companies that match your accessibility needs, location, and project scope.
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="contact.html" class="btn-primary">Request Quotes</a>
-                    <a href="tel:+18005550199" class="btn-secondary">Call Now</a>
-                </div>
-
-                <ul class="hero-chips">
-                    <li>Compare multiple providers</li>
-                    <li>Quote request pathway</li>
-                    <li>Local availability insights</li>
-                </ul>
-            </div>
-
-            <div class="service-hero-visual">
-                <img src="assets/images/services/services-hero-said.jpg" alt="Walk-in tub installation" />
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="section how-it-works">
-
-        <div class="container">
-
-            <h2>How homeowners approach installation</h2>
-
-            <div class="grid-3">
-
-                <div class="card">
-                    <i class="fa-solid fa-bath"></i>
-                    <h3>Explore options</h3>
-                    <p>Review installation types, configurations, and accessibility features.</p>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-list-check" aria-hidden="true"></i>
-                    <h3>Compare providers</h3>
-                    <p>Evaluate companies based on availability, scope, and response.</p>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-phone-volume"></i>
-                    <h3>Request quotes</h3>
-                    <p>Connect with providers that match your project details.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="section factors">
-
-        <div class="container grid-2">
-
-            <div>
-                <h2>What affects installation selection</h2>
-
-                <ul class="factors-list">
-                    <li>Bathroom layout and space</li>
-                    <li>Mobility and accessibility requirements</li>
-                    <li>Installation timeline</li>
-                    <li>Material and model preferences</li>
-                </ul>
-            </div>
-
-            <div class="image-box">
-                <img src="assets/images/services/services-image.jpg" alt="Installation planning details" />
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="section service-cards">
-
-        <div class="container">
-
-            <h2>Related services</h2>
-
-            <div class="cards-grid">
-
-                <a href="walk-in-tub-replacement.html" class="service-card">
-                    <img src="assets/images/services/servicer-card-2.jpg" alt="Replacement service" />
-                    <span>Replacement</span>
-                </a>
-
-                <a href="walk-in-tub-repair.html" class="service-card">
-                    <img src="assets/images/services/servicer-card-3.jpg" alt="Repair service" />
-                    <span>Repair</span>
-                </a>
-
-                <a href="walk-in-tub-maintenance.html" class="service-card">
-                    <img src="assets/images/services/servicer-card-5.jpg" alt="Maintenance service" />
-                    <span>Maintenance</span>
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="section faq">
-
-        <div class="container">
-
-            <h2>Common questions</h2>
-
-            <div class="faq-item">
-                <button class="faq-question">How do I compare providers?</button>
-                <div class="faq-answer">You can request quotes and compare based on availability, scope, and response.
+                        <ul class="service-hero__chips">
+                            <li>New setup planning</li>
+                            <li>Bathroom-fit review</li>
+                            <li>Accessibility priorities</li>
+                            <li>Quote comparison</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="faq-item">
-                <button class="faq-question">Are quotes free?</button>
-                <div class="faq-answer">Many providers offer initial estimates depending on project details.</div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="section cta">
-
-        <div class="container">
-
-            <div class="cta-box">
-                <h2>Find installation providers in your area</h2>
-                <a href="contact.html" class="btn-primary">Request Quotes</a>
-            </div>
-
-        </div>
-
-    </section>
-
-    <footer class="footer">
-
-        <div class="container">
-
-            <div class="footer-grid">
-
-                <div>
-                    <h3>Elvion Bath</h3>
-                    <p>Independent matching platform for homeowners.</p>
+        <section class="service-section section">
+            <div class="container">
+                <div class="section-heading" data-reveal="fade-up">
+                    <span class="section-kicker">How homeowners approach installation</span>
+                    <h2>Installation paths are usually compared by fit, features, and local provider response.</h2>
                 </div>
 
-                <div>
-                    <h4>Links</h4>
-                    <a href="privacy-policy.html">Privacy</a>
-                    <a href="terms-of-service.html">Terms</a>
-                    <a href="cookie-policy.html">Cookies</a>
-                </div>
+                <div class="service-card-grid">
+                    <article class="service-detail-card" data-reveal="fade-up">
+                        <div class="service-detail-card__icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <h3>Measure fit first</h3>
+                        <p>Bathroom dimensions and entry flow often shape which installation options make sense.</p>
+                    </article>
 
-                <div>
-                    <h4>Contact</h4>
-                    <a href="tel:+18005550199">(800) 555-0199</a>
-                </div>
+                    <article class="service-detail-card" data-reveal="fade-up" data-delay="70">
+                        <div class="service-detail-card__icon"><i class="fa-solid fa-list-check"></i></div>
+                        <h3>Compare service scope</h3>
+                        <p>Provider comparisons are clearer when scope, prep work, and timeline are visible.</p>
+                    </article>
 
+                    <article class="service-detail-card" data-reveal="fade-up" data-delay="140">
+                        <div class="service-detail-card__icon"><i class="fa-solid fa-shield-heart"></i></div>
+                        <h3>Match accessibility needs</h3>
+                        <p>Comfort and support priorities help narrow options before quote requests are submitted.</p>
+                    </article>
+
+                    <article class="service-detail-card" data-reveal="fade-up" data-delay="210">
+                        <div class="service-detail-card__icon"><i class="fa-solid fa-file-signature"></i></div>
+                        <h3>Request quotes with context</h3>
+                        <p>Better context usually leads to more relevant responses and cleaner next-step decisions.</p>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <p class="disclaimer">
-                Disclaimer: This site is a free service to assist homeowners in connecting with local service providers.
-                All contractors/providers are independent and this site does not warrant or guarantee any work
-                performed.
-                It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary
-                license and insurance required for the work being performed. All persons depicted in a photo or video
-                are actors or models and not contractors listed on this site.
-            </p>
+        <section class="service-section section">
+            <div class="container">
+                <div class="service-split">
+                    <div class="service-split__content" data-reveal="fade-right">
+                        <span class="section-kicker">Installation planning</span>
+                        <h2>Most installation comparisons begin with practical details, not product names.</h2>
+                        <p>
+                            Homeowners often compare providers using layout clarity, feature priorities, mobility context,
+                            and how transparent the quote path feels before moving forward.
+                        </p>
+                    </div>
+                    <aside class="service-split__cards" data-reveal="fade-left">
+                        <article class="service-mini-card">
+                            <span class="service-mini-card__label">Typical starting point</span>
+                            <strong>Bathroom fit and accessibility goals are defined before provider outreach.</strong>
+                        </article>
+                        <article class="service-mini-card">
+                            <span class="service-mini-card__label">Provider-fit question</span>
+                            <strong>Which route aligns best with project scope, timing, and communication quality.</strong>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
 
-        </div>
+        <section class="service-section section">
+            <div class="container">
+                <div class="service-factor-panel" data-reveal="fade-up">
+                    <div class="service-factor-panel__content">
+                        <span class="section-kicker">Installation factors</span>
+                        <h2>What usually shapes installation-provider comparisons.</h2>
+                        <ul class="service-factor-list">
+                            <li>Bathroom dimensions and access constraints</li>
+                            <li>Mobility and comfort priorities</li>
+                            <li>Feature selections and setup expectations</li>
+                            <li>Local coverage and quote responsiveness</li>
+                        </ul>
+                    </div>
 
-    </footer>
+                    <div class="service-factor-panel__aside">
+                        <div class="service-factor-pill">Installation category</div>
+                        <div class="service-factor-pill">Fit-focused</div>
+                        <div class="service-factor-pill">Planning-first</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section section">
+            <div class="container">
+                <div class="section-heading" data-reveal="fade-up">
+                    <span class="section-kicker">Related categories</span>
+                    <h2>Other pages homeowners often review around installation.</h2>
+                </div>
+
+                <div class="related-grid">
+                    <article class="related-card" data-reveal="fade-up">
+                        <img src="assets/images/services/servicer-card-2.jpg" alt="Replacement category" class="card-media" />
+                        <div class="related-card__content">
+                            <h3>Replacement</h3>
+                            <p>For homes where updating an existing setup may be more relevant than a new install path.</p>
+                            <a href="walk-in-tub-replacement.html">Explore replacement</a>
+                        </div>
+                    </article>
+
+                    <article class="related-card" data-reveal="fade-up" data-delay="80">
+                        <img src="assets/images/services/servicer-card-3.jpg" alt="Repair category" class="card-media" />
+                        <div class="related-card__content">
+                            <h3>Repair</h3>
+                            <p>For issue-based needs when system performance or component reliability is the main concern.</p>
+                            <a href="walk-in-tub-repair.html">Explore repair</a>
+                        </div>
+                    </article>
+
+                    <article class="related-card" data-reveal="fade-up" data-delay="160">
+                        <img src="assets/images/services/servicer-card-5.jpg" alt="Maintenance category" class="card-media" />
+                        <div class="related-card__content">
+                            <h3>Maintenance</h3>
+                            <p>For long-term upkeep planning after installation and regular performance checks.</p>
+                            <a href="walk-in-tub-maintenance.html">Explore maintenance</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-cta section">
+            <div class="container">
+                <div class="service-cta__panel" data-reveal="fade-up">
+                    <div class="service-cta__content">
+                        <span class="section-kicker">Next step</span>
+                        <h2>Request quotes for walk-in tub installation options.</h2>
+                        <p>Start with fit and accessibility context to get cleaner provider responses.</p>
+                    </div>
+                    <div class="service-cta__actions">
+                        <a class="button button--primary" href="contact.html"><i class="fa-solid fa-file-circle-plus"></i><span>Request Quotes</span></a>
+                        <a class="button button--ghost-dark" href="tel:+18005550199"><i class="fa-solid fa-phone-volume"></i><span>Call Now</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section section">
+            <div class="container">
+                <div class="section-heading" data-reveal="fade-up">
+                    <span class="section-kicker">FAQ</span>
+                    <h2>Common installation questions.</h2>
+                </div>
+
+                <div class="faq-list" data-faq-root>
+                    <article class="faq-item" data-faq-item>
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>How do homeowners compare installation providers effectively?</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>Most compare by bathroom fit, service scope clarity, accessibility priorities, and response quality.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item" data-faq-item>
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>What details help produce better quote responses?</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>Project direction, mobility goals, layout context, and timing expectations often improve quote relevance.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+            <footer class="site-footer">
+
+            <div class="container">
+                <div class="site-footer__top">
+                    <div class="site-footer__brand">
+                        <a class="site-logo site-logo--footer" href="index.html" aria-label="Elvion Bath home">
+                            <i class="fa-solid fa-bath"></i>
+                            <span class="site-logo__text">
+                                <span class="site-logo__title">Elvion Bath</span>
+
+                            </span>
+                        </a>
+
+                        <p>
+                            Elvion Bath is an independent matching platform that helps homeowners compare service categories, review local provider options, and request quotes with clearer project context.
+                        </p>
+
+                        <div class="footer-badges" aria-label="Platform context">
+                            <span>USA Service Area Context</span>
+                            <span>Quote Request Path</span>
+                            <span>Accessibility-Focused Categories</span>
+                        </div>
+                    </div>
+
+                    <div class="site-footer__navs">
+                        <div class="footer-nav">
+                            <h2>Navigation</h2>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-nav">
+                            <h2>Services</h2>
+                            <ul>
+                                <li><a href="walk-in-tub-installation.html">Installation</a></li>
+                                <li><a href="walk-in-tub-replacement.html">Replacement</a></li>
+                                <li><a href="walk-in-tub-repair.html">Repair</a></li>
+                                <li><a href="walk-in-tub-accessibility-upgrades.html">Accessibility Upgrades</a></li>
+                                <li><a href="walk-in-tub-maintenance.html">Maintenance</a></li>
+                                <li><a href="walk-in-tub-consultation.html">Consultation</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-nav">
+                            <h2>Legal</h2>
+                            <ul>
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="terms-of-service.html">Terms of Service</a></li>
+                                <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-nav">
+                            <h2>Contact</h2>
+                            <ul>
+                                <li><a href="tel:+18005550199">(800) 555-0199</a></li>
+                                <li><a href="mailto:hello@walkintubcompare.com">hello@walkintubcompare.com</a></li>
+                                <li><span>Service Area: USA</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-footer__legal">
+                    <p class="site-footer__disclaimer">
+                        Disclaimer: This website is a free referral service that helps homeowners connect with local providers. All contractors/providers are independent. Elvion Bath does not perform services and does not guarantee any work, results, or pricing. Homeowners are responsible for verifying that any provider they hire is properly licensed and insured for the requested work. Any people shown in photos or videos are actors or models and are not actual contractors listed on this website.
+                    </p>
+
+                    <div class="site-footer__bottom">
+                        <p>&copy; 2026 Elvion Bath. All rights reserved.</p>
+                        <div class="site-footer__legal-links">
+                            <a href="privacy-policy.html">Privacy Policy</a>
+                            <a href="terms-of-service.html">Terms of Service</a>
+                            <a href="cookie-policy.html">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
 
     <script src="js/main.js" type="module"></script>
     <script src="js/service-page.js" type="module"></script>
