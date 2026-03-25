@@ -6,8 +6,26 @@
    HERO
 ========================= */
 .service-hero {
+    position: relative;
+    isolation: isolate;
     padding-top: clamp(2rem, 3vw, 3rem);
     overflow: clip;
+    background-color: var(--surface-2);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body[data-service-bg="catalog-1"] .service-hero {
+    background-image:
+        linear-gradient(180deg, rgba(10, 18, 28, 0.76) 0%, rgba(10, 18, 28, 0.68) 48%, rgba(10, 18, 28, 0.78) 100%),
+        url("../assets/images/services/services-catalog-1.jpg");
+}
+
+body[data-service-bg="catalog-3"] .service-hero {
+    background-image:
+        linear-gradient(180deg, rgba(10, 18, 28, 0.74) 0%, rgba(10, 18, 28, 0.66) 48%, rgba(10, 18, 28, 0.78) 100%),
+        url("../assets/images/services/services-catalog-3.jpg");
 }
 
 .service-hero::before {
@@ -16,10 +34,22 @@
     inset: 0 0 auto;
     height: min(80%, 820px);
     background:
-        radial-gradient(circle at 10% 14%, rgba(255, 255, 255, 0.28), transparent 20%),
-        radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.18), transparent 18%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+        radial-gradient(circle at 10% 14%, rgba(255, 255, 255, 0.15), transparent 20%),
+        radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.1), transparent 18%),
+        linear-gradient(180deg, rgba(8, 12, 20, 0.16) 0%, rgba(8, 12, 20, 0) 100%);
     pointer-events: none;
+}
+
+.service-hero .section-kicker,
+.service-hero__content h1,
+.service-hero__lead,
+.service-hero-content h1,
+.service-hero-content p {
+    color: #f6f9ff;
+}
+
+.service-hero .section-kicker {
+    color: rgba(228, 238, 255, 0.88);
 }
 
 .service-hero__layout {
@@ -67,12 +97,18 @@
     align-items: center;
     padding: 0.58rem 0.82rem;
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--bg-elevated) 84%, transparent);
-    border: 1px solid var(--line);
+    background: rgba(14, 25, 38, 0.56);
+    border: 1px solid rgba(255, 255, 255, 0.24);
     box-shadow: var(--shadow-xs), var(--shadow-inset);
-    color: var(--text-soft);
+    color: #f5f8ff;
     font-size: 0.9rem;
     font-weight: 600;
+}
+
+.service-hero .hero-chips li {
+    background: rgba(14, 25, 38, 0.56);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    color: #f5f8ff;
 }
 
 .service-hero__visual {
@@ -127,8 +163,8 @@
     width: min(100%, 280px);
     padding: 1rem 1rem 1.1rem;
     border-radius: 24px;
-    background: color-mix(in srgb, var(--bg-elevated) 84%, transparent);
-    border: 1px solid var(--line);
+    background: rgba(10, 18, 30, 0.66);
+    border: 1px solid rgba(255, 255, 255, 0.24);
     box-shadow: var(--shadow-md), var(--shadow-inset);
     backdrop-filter: blur(16px);
 }
@@ -150,13 +186,26 @@
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: rgba(222, 233, 252, 0.82);
 }
 
 .service-hero__card strong {
     display: block;
-    color: var(--text);
+    color: #f7faff;
     line-height: 1.5;
+}
+
+.service-hero .button--ghost,
+.service-hero .btn-secondary {
+    color: #f7fbff;
+    background: rgba(11, 20, 32, 0.38);
+    border-color: rgba(255, 255, 255, 0.36);
+}
+
+.service-hero .button--ghost:hover,
+.service-hero .btn-secondary:hover {
+    background: rgba(11, 20, 32, 0.56);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* =========================
@@ -288,10 +337,23 @@
     padding: clamp(1.35rem, 3vw, 2rem);
     border-radius: 34px;
     background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 24%),
-        var(--gradient-panel);
+        linear-gradient(140deg, rgba(8, 13, 22, 0.78) 0%, rgba(8, 13, 22, 0.62) 100%),
+        url("../assets/images/services/services-image.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     border: 1px solid var(--line);
     box-shadow: var(--shadow-md), var(--shadow-inset);
+}
+
+.service-factor-panel .section-kicker,
+.service-factor-panel h2,
+.service-factor-panel .service-factor-list li {
+    color: #f4f8ff;
+}
+
+.service-factor-panel .service-factor-list li::before {
+    background: rgba(244, 248, 255, 0.8);
 }
 
 .service-factor-panel__content {
