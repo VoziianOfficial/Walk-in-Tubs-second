@@ -7,7 +7,7 @@
     <title>Contact Us | Walk-in Tub Compare</title>
     <meta name="description"
         content="Request walk-in tub quotes, compare provider options, and contact Walk-in Tub Compare for a more structured starting point across the USA." />
-    <meta name="theme-color" content="#f7f3ee" />
+    <meta name="theme-color" content="#111214" />
     <link rel="canonical" href="https://www.example.com/contact.html" />
 
     <link rel="icon" type="image/svg+xml" href="assets/images/global/favicon.svg" />
@@ -42,7 +42,7 @@
                         </span>
                         <span class="site-logo__text">
                             <span class="site-logo__title">Walk-in Tub Compare</span>
-                            <span class="site-logo__subtitle">USA Provider Matching Platform</span>
+                            <span class="site-logo__subtitle">Independent USA Matching Platform</span>
                         </span>
                     </a>
 
@@ -56,6 +56,14 @@
                     </nav>
 
                     <div class="site-header__actions">
+                        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme"
+                            title="Switch theme">
+                            <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"
+                                aria-hidden="true"></i>
+                            <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"
+                                aria-hidden="true"></i>
+                        </button>
+
                         <a class="header-phone header-phone--mobile" href="tel:+18005550199" aria-label="Call now">
                             <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                         </a>
@@ -87,7 +95,7 @@
                         </span>
                         <span class="site-logo__text">
                             <span class="site-logo__title">Walk-in Tub Compare</span>
-                            <span class="site-logo__subtitle">USA Provider Matching Platform</span>
+                            <span class="site-logo__subtitle">Independent USA Matching Platform</span>
                         </span>
                     </a>
 
@@ -99,10 +107,12 @@
                 <div class="mobile-menu__body">
                     <nav class="mobile-menu__nav" aria-label="Mobile primary navigation">
                         <ul class="mobile-menu__list">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html" aria-current="page">Contact</a></li>
+                            <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                            <li><a href="services.html"><i class="fa-solid fa-grid-2"></i><span>Services</span></a></li>
+                            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i><span>About Us</span></a>
+                            </li>
+                            <li><a href="contact.html" aria-current="page"><i
+                                        class="fa-solid fa-envelope-open-text"></i><span>Contact</span></a></li>
                         </ul>
                     </nav>
 
@@ -127,15 +137,31 @@
                                 <li><a href="cookie-policy.html">Cookie Policy</a></li>
                             </ul>
                         </div>
+
+                        <div class="mobile-menu__card">
+                            <span class="mobile-menu__eyebrow">Contact</span>
+                            <ul class="mobile-menu__links">
+                                <li><a href="tel:+18005550199">(800) 555-0199</a></li>
+                                <li><a href="mailto:hello@walkintubcompare.com">hello@walkintubcompare.com</a></li>
+                                <li><a href="#contact-form-section">Go to Form</a></li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="mobile-menu__actions">
+                        <button class="button button--secondary button--block" type="button" data-theme-toggle
+                            aria-label="Switch theme">
+                            <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+                            <span>Switch Theme</span>
+                        </button>
+
                         <a class="button button--primary button--block" href="tel:+18005550199">
                             <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                             <span>Call Now</span>
                         </a>
-                        <a class="button button--secondary button--block" href="contact.html">
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+
+                        <a class="button button--ghost-dark button--block" href="#contact-form-section">
+                            <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
                             <span>Request Quotes</span>
                         </a>
                     </div>
@@ -144,17 +170,30 @@
         </aside>
 
         <main id="main-content">
-            <!-- Hero -->
+            <!-- HERO -->
             <section class="contact-hero section">
-                <div class="container">
+                <div class="container-wide">
                     <div class="contact-hero__layout">
-                        <div class="contact-hero__content" data-reveal="fade-up">
+                        <div class="contact-hero__visual" data-reveal="fade-right">
+                            <div class="contact-hero__image">
+                                <img src="assets/images/contact/contact-hero-main.jpg"
+                                    alt="Luxury accessible bathroom interior with elegant walk-in tub design" />
+                            </div>
+
+                            <div class="contact-hero__note contact-hero__note--top">
+                                <span>Contact path</span>
+                                <strong>Use the form for a cleaner, category-based quote request flow.</strong>
+                            </div>
+                        </div>
+
+                        <div class="contact-hero__content" data-reveal="fade-left">
                             <span class="section-kicker">Contact & Quote Requests</span>
-                            <h1>Start comparing walk-in tub provider options with a clearer request path.</h1>
+                            <h1>Reach out with a more structured starting point.</h1>
                             <p class="contact-hero__lead">
-                                Share a few details about your project, accessibility priorities, or service interest.
-                                The platform is designed to help homeowners move toward more organized provider
-                                comparisons and quote requests.
+                                This page is designed to help homeowners request quotes in a calmer way — with room to
+                                clarify service category,
+                                accessibility priorities, bathroom context, and project direction before comparing
+                                provider responses.
                             </p>
 
                             <div class="contact-hero__actions">
@@ -168,49 +207,27 @@
                                 </a>
                             </div>
 
-                            <ul class="contact-hero__highlights" aria-label="Contact highlights">
-                                <li>
-                                    <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
-                                    <span>Quote request starting point</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                                    <span>USA service-area context</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
-                                    <span>Accessibility-aware category flow</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="contact-hero__visual" data-reveal="fade-left">
-                            <div class="contact-hero__panel">
-                                <img src="assets/images/contact/contact-hero.jpg"
-                                    alt="Refined accessible bathroom interior with premium walk-in tub styling" />
-                            </div>
-
-                            <div class="contact-hero__card contact-hero__card--top">
-                                <span>Best use of this page</span>
-                                <strong>Compare options after clarifying service type, location, and feature
-                                    priorities.</strong>
-                            </div>
-
-                            <div class="contact-hero__card contact-hero__card--bottom">
-                                <span>Helpful first step</span>
-                                <strong>Share project details to support a more focused provider-response path.</strong>
+                            <div class="contact-hero__quick">
+                                <article class="contact-hero__quick-card">
+                                    <strong>Phone</strong>
+                                    <a href="tel:+18005550199">(800) 555-0199</a>
+                                </article>
+                                <article class="contact-hero__quick-card">
+                                    <strong>Email</strong>
+                                    <a href="mailto:hello@walkintubcompare.com">hello@walkintubcompare.com</a>
+                                </article>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Contact Options -->
+            <!-- CONTACT OPTIONS -->
             <section class="contact-options section">
                 <div class="container">
                     <div class="section-heading" data-reveal="fade-up">
-                        <span class="section-kicker">Contact Options</span>
-                        <h2>Choose the contact path that fits your next step.</h2>
+                        <span class="section-kicker">Choose your path</span>
+                        <h2>Different ways to begin the conversation.</h2>
                     </div>
 
                     <div class="contact-options__grid">
@@ -218,25 +235,24 @@
                             <div class="contact-option-card__icon">
                                 <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                             </div>
-                            <h3>Call</h3>
-                            <p>Use the direct phone CTA when you want a faster starting point for quote-related
-                                questions.</p>
+                            <h3>Call now</h3>
+                            <p>Use the direct CTA when you want a quicker route for general quote-related questions.</p>
                             <a class="text-link" href="tel:+18005550199">
                                 (800) 555-0199
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </article>
 
                         <article class="contact-option-card" data-reveal="fade-up" data-delay="90">
                             <div class="contact-option-card__icon">
-                                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
                             </div>
-                            <h3>Email</h3>
-                            <p>Send a general inquiry if you want to outline project needs before completing a quote
+                            <h3>Send an email</h3>
+                            <p>Use email if you want to outline the project before moving into a more structured quote
                                 request.</p>
                             <a class="text-link" href="mailto:hello@walkintubcompare.com">
                                 hello@walkintubcompare.com
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </article>
 
@@ -244,35 +260,34 @@
                             <div class="contact-option-card__icon">
                                 <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i>
                             </div>
-                            <h3>Request Quotes</h3>
-                            <p>Use the form below to share category, location, and project details in a more structured
-                                format.</p>
+                            <h3>Submit the form</h3>
+                            <p>Share category, ZIP code, and priorities so the request starts from a cleaner comparison
+                                baseline.</p>
                             <a class="text-link" href="#contact-form-section">
                                 Go to form
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <!-- Form + Side Info -->
+            <!-- FORM SECTION -->
             <section class="contact-form-section section" id="contact-form-section">
                 <div class="container">
                     <div class="contact-form-section__layout">
-                        <div class="contact-form-wrap" data-reveal="fade-up">
-                            <div class="contact-form-wrap__header">
+                        <div class="contact-form-panel" data-reveal="fade-up">
+                            <div class="contact-form-panel__header">
                                 <span class="section-kicker">Request Quotes</span>
-                                <h2>Tell us a bit about your project.</h2>
+                                <h2>Tell us a bit about the project.</h2>
                                 <p>
-                                    This form is designed to support a cleaner quote-request pathway based on service
-                                    category,
-                                    home location, and feature priorities.
+                                    The form is intentionally compact so the request feels easier to complete without
+                                    losing the details that help support a better comparison path.
                                 </p>
                             </div>
 
                             <form class="contact-form" id="contact-form" novalidate>
-                                <div class="form-grid contact-form__grid">
+                                <div class="contact-form__grid">
                                     <div class="form-field">
                                         <label for="full-name">Full Name</label>
                                         <input id="full-name" name="fullName" type="text"
@@ -313,7 +328,7 @@
                                     <div class="form-field form-field--full">
                                         <label for="project-notes">Project Notes</label>
                                         <textarea id="project-notes" name="notes"
-                                            placeholder="Share details about your project, bathroom layout, accessibility needs, or feature preferences."></textarea>
+                                            placeholder="Share details about comfort goals, accessibility priorities, bathroom fit, or project direction."></textarea>
                                     </div>
                                 </div>
 
@@ -322,16 +337,14 @@
                                         <input type="checkbox" name="consent" required />
                                         <span>
                                             I agree to be contacted regarding my request and understand this platform
-                                            helps connect homeowners
-                                            with independent providers.
+                                            helps connect homeowners with independent providers.
                                         </span>
                                     </label>
                                 </div>
 
                                 <p class="form-note">
-                                    By submitting this form, you acknowledge that this site is an independent comparison
-                                    and matching platform,
-                                    not a direct contractor or installation company.
+                                    This site operates as an independent comparison and matching platform, not as a
+                                    direct installer or contractor.
                                 </p>
 
                                 <div class="contact-form__actions">
@@ -344,29 +357,32 @@
                         </div>
 
                         <aside class="contact-side-panel" data-reveal="fade-left">
-                            <div class="contact-side-panel__card">
-                                <span class="contact-side-panel__eyebrow">What homeowners often include</span>
-                                <ul class="contact-side-panel__list">
+                            <div class="contact-side-card contact-side-card--image">
+                                <img src="assets/images/contact/contact-side-1.jpg"
+                                    alt="Premium walk-in tub detail with elegant bathroom materials" />
+                                <div class="contact-side-card__overlay">
+                                    <span>Helpful first step</span>
+                                    <strong>Choose the service category that best matches the real need first.</strong>
+                                </div>
+                            </div>
+
+                            <div class="contact-side-card">
+                                <span class="contact-side-card__eyebrow">What homeowners often include</span>
+                                <ul class="contact-side-card__list">
                                     <li>Preferred service category</li>
-                                    <li>Location or ZIP code</li>
-                                    <li>Accessibility priorities</li>
-                                    <li>Bathroom layout notes</li>
-                                    <li>Interest in hydrotherapy or comfort features</li>
+                                    <li>ZIP code or area context</li>
+                                    <li>Comfort or mobility priorities</li>
+                                    <li>Bathroom-fit questions</li>
+                                    <li>Whether the project feels new, existing, or planning-first</li>
                                 </ul>
                             </div>
 
-                            <div class="contact-side-panel__card">
-                                <span class="contact-side-panel__eyebrow">Why this helps</span>
-                                <p>
-                                    A more structured request can make provider responses easier to compare across fit,
-                                    scope,
-                                    and timing expectations.
-                                </p>
-                            </div>
-
-                            <div class="contact-side-panel__card">
-                                <span class="contact-side-panel__eyebrow">Need a faster route?</span>
-                                <a class="button button--secondary button--block" href="tel:+18005550199">
+                            <div class="contact-side-card contact-side-card--dark">
+                                <span class="contact-side-card__eyebrow">Prefer a faster route?</span>
+                                <h3>Call directly.</h3>
+                                <p>For general contact and quote-start questions, the phone CTA remains available in one
+                                    tap.</p>
+                                <a class="button button--ghost-dark button--block" href="tel:+18005550199">
                                     <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                                     <span>Call Now</span>
                                 </a>
@@ -376,27 +392,26 @@
                 </div>
             </section>
 
-            <!-- Map / Coverage -->
+            <!-- MAP -->
             <section class="contact-map section">
-                <div class="container">
+                <div class="container-wide">
                     <div class="section-heading" data-reveal="fade-up">
-                        <span class="section-kicker">Coverage Context</span>
-                        <h2>A service-area section designed for clarity, not a contractor-office claim.</h2>
+                        <span class="section-kicker">Coverage context</span>
+                        <h2>USA comparison flow, not contractor-office positioning.</h2>
                         <p>
-                            This map is used to frame USA coverage context and quote-routing expectations rather than
-                            present the platform
-                            as a local installation office.
+                            This section helps frame service-area expectations and provider-routing context without
+                            implying that the platform itself performs the work.
                         </p>
                     </div>
 
                     <div class="contact-map__layout">
                         <div class="contact-map__card" data-reveal="fade-up">
                             <div class="contact-map__overlay">
-                                <span class="contact-map__eyebrow">USA Comparison Context</span>
-                                <h3>Provider availability, timing, and quote paths may vary by region.</h3>
+                                <span class="contact-map__eyebrow">USA comparison map</span>
+                                <h3>Availability and provider participation may vary by region.</h3>
                                 <p>
-                                    Service participation and response timing can differ depending on location,
-                                    category, and project complexity.
+                                    Category availability, response timing, and provider coverage may differ depending
+                                    on the project and the homeowner’s location.
                                 </p>
                             </div>
 
@@ -407,53 +422,59 @@
                             </div>
                         </div>
 
-                        <aside class="contact-map__side" data-reveal="fade-up" data-delay="120">
-                            <div class="contact-map__side-icon">
-                                <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
-                            </div>
-                            <h3>How this section should be understood</h3>
-                            <p>
-                                It helps set expectations around regional quote availability and provider coverage
-                                without implying that
-                                the platform directly performs installation or remodeling work.
-                            </p>
-                            <ul class="contact-map__side-points">
-                                <li>Location can affect provider participation</li>
-                                <li>Some categories may have different regional demand</li>
-                                <li>Quote timing and options can vary by market</li>
-                            </ul>
+                        <aside class="contact-map__aside" data-reveal="fade-left">
+                            <article class="contact-map__aside-card">
+                                <div class="contact-map__aside-icon">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <h3>How to read this section</h3>
+                                <p>
+                                    It supports regional context for comparison and quote routing. It does not present
+                                    the site as a direct local office.
+                                </p>
+                            </article>
+
+                            <article class="contact-map__aside-card">
+                                <div class="contact-map__aside-icon">
+                                    <i class="fa-solid fa-list-check"></i>
+                                </div>
+                                <h3>What may vary by market</h3>
+                                <p>
+                                    Service category availability, provider response timing, and which quote paths feel
+                                    most practical.
+                                </p>
+                            </article>
                         </aside>
                     </div>
                 </div>
             </section>
 
-            <!-- Reassurance -->
-            <section class="contact-reassurance section">
+            <!-- CLARITY PANEL -->
+            <section class="contact-clarity section">
                 <div class="container">
-                    <div class="contact-reassurance__panel" data-reveal="fade-up">
-                        <div class="contact-reassurance__content">
-                            <span class="section-kicker">Platform Clarity</span>
-                            <h2>Independent comparison support for homeowners reviewing walk-in tub options.</h2>
+                    <div class="contact-clarity__panel" data-reveal="fade-up">
+                        <div class="contact-clarity__content">
+                            <span class="section-kicker">Platform clarity</span>
+                            <h2>Independent quote-request support for homeowners comparing walk-in tub options.</h2>
                             <p>
-                                This platform is intended to help organize provider comparisons and quote-request
-                                pathways.
-                                It is not a direct installer, not a contractor, and does not claim to perform the work
-                                itself.
+                                Walk-in Tub Compare is intended to support category exploration, provider comparison,
+                                and quote-request organization.
+                                It is not a direct installer and does not claim to perform the underlying work itself.
                             </p>
                         </div>
 
-                        <div class="contact-reassurance__links">
+                        <div class="contact-clarity__links">
                             <a class="text-link" href="privacy-policy.html">
                                 Privacy Policy
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </a>
                             <a class="text-link" href="terms-of-service.html">
                                 Terms of Service
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </a>
                             <a class="text-link" href="cookie-policy.html">
                                 Cookie Policy
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -591,7 +612,6 @@
             </div>
         </div>
 
-        <!-- Success Modal -->
         <div class="success-modal" id="success-modal" role="dialog" aria-modal="true"
             aria-labelledby="success-modal-title" hidden>
             <div class="success-modal__backdrop"></div>

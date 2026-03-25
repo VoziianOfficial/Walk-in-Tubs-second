@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy | Walk-in Tub Compare</title>
     <meta name="description"
-        content="Read the Privacy Policy for Walk-in Tub Compare, including information about data use, contact forms, cookies, and platform operations." />
-    <meta name="theme-color" content="#f7f3ee" />
+        content="Read the Privacy Policy for Walk-in Tub Compare, including details about information submitted through the platform, quote requests, cookies, and general data handling context." />
+    <meta name="theme-color" content="#111214" />
     <link rel="canonical" href="https://www.example.com/privacy-policy.html" />
 
     <link rel="icon" type="image/svg+xml" href="assets/images/global/favicon.svg" />
@@ -42,7 +42,7 @@
                         </span>
                         <span class="site-logo__text">
                             <span class="site-logo__title">Walk-in Tub Compare</span>
-                            <span class="site-logo__subtitle">USA Provider Matching Platform</span>
+                            <span class="site-logo__subtitle">Independent USA Matching Platform</span>
                         </span>
                     </a>
 
@@ -56,6 +56,14 @@
                     </nav>
 
                     <div class="site-header__actions">
+                        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme"
+                            title="Switch theme">
+                            <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"
+                                aria-hidden="true"></i>
+                            <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"
+                                aria-hidden="true"></i>
+                        </button>
+
                         <a class="header-phone header-phone--mobile" href="tel:+18005550199" aria-label="Call now">
                             <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                         </a>
@@ -87,7 +95,7 @@
                         </span>
                         <span class="site-logo__text">
                             <span class="site-logo__title">Walk-in Tub Compare</span>
-                            <span class="site-logo__subtitle">USA Provider Matching Platform</span>
+                            <span class="site-logo__subtitle">Independent USA Matching Platform</span>
                         </span>
                     </a>
 
@@ -99,10 +107,12 @@
                 <div class="mobile-menu__body">
                     <nav class="mobile-menu__nav" aria-label="Mobile primary navigation">
                         <ul class="mobile-menu__list">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                            <li><a href="services.html"><i class="fa-solid fa-grid-2"></i><span>Services</span></a></li>
+                            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i><span>About Us</span></a>
+                            </li>
+                            <li><a href="contact.html"><i
+                                        class="fa-solid fa-envelope-open-text"></i><span>Contact</span></a></li>
                         </ul>
                     </nav>
 
@@ -115,15 +125,31 @@
                                 <li><a href="cookie-policy.html">Cookie Policy</a></li>
                             </ul>
                         </div>
+
+                        <div class="mobile-menu__card">
+                            <span class="mobile-menu__eyebrow">Contact</span>
+                            <ul class="mobile-menu__links">
+                                <li><a href="tel:+18005550199">(800) 555-0199</a></li>
+                                <li><a href="mailto:hello@walkintubcompare.com">hello@walkintubcompare.com</a></li>
+                                <li><a href="contact.html">Request Quotes</a></li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="mobile-menu__actions">
+                        <button class="button button--secondary button--block" type="button" data-theme-toggle
+                            aria-label="Switch theme">
+                            <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+                            <span>Switch Theme</span>
+                        </button>
+
                         <a class="button button--primary button--block" href="tel:+18005550199">
                             <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                             <span>Call Now</span>
                         </a>
-                        <a class="button button--secondary button--block" href="contact.html">
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+
+                        <a class="button button--ghost-dark button--block" href="contact.html">
+                            <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
                             <span>Request Quotes</span>
                         </a>
                     </div>
@@ -133,28 +159,34 @@
 
         <main id="main-content">
             <section class="legal-hero section">
-                <div class="container">
+                <div class="container-wide">
                     <div class="legal-hero__layout">
                         <div class="legal-hero__content" data-reveal="fade-up">
                             <span class="section-kicker">Legal Information</span>
                             <h1>Privacy Policy</h1>
                             <p class="legal-hero__lead">
                                 This Privacy Policy explains how Walk-in Tub Compare may collect, use, and manage
-                                information submitted through the platform.
+                                information submitted through the platform and related quote-request pathways.
                             </p>
 
                             <div class="legal-hero__meta">
-                                <span>Effective Date: January 1, 2026</span>
-                                <span>Last Updated: January 1, 2026</span>
+                                <span><i class="fa-solid fa-calendar-days"></i> Effective Date: January 1, 2026</span>
+                                <span><i class="fa-solid fa-rotate"></i> Last Updated: January 1, 2026</span>
                             </div>
                         </div>
 
-                        <aside class="legal-hero__nav" data-reveal="fade-left" aria-label="Legal page navigation">
-                            <a class="legal-nav-card legal-nav-card--active" href="privacy-policy.html">Privacy
-                                Policy</a>
-                            <a class="legal-nav-card" href="terms-of-service.html">Terms of Service</a>
-                            <a class="legal-nav-card" href="cookie-policy.html">Cookie Policy</a>
-                        </aside>
+                        <div class="legal-hero__visual" data-reveal="fade-left">
+                            <div class="legal-hero__image">
+                                <img src="assets/images/legal/legal-privacy-hero.jpg"
+                                    alt="Premium interior detail representing privacy and platform trust" />
+                            </div>
+
+                            <div class="legal-hero__floating-card">
+                                <span>Platform note</span>
+                                <strong>This site operates as an independent comparison and matching platform, not as a
+                                    direct installer or contractor.</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -175,6 +207,11 @@
                                     <a href="#your-choices">Your Choices</a>
                                     <a href="#contact-us">Contact Us</a>
                                 </nav>
+
+                                <div class="legal-sidebar__links">
+                                    <a href="terms-of-service.html">Terms of Service</a>
+                                    <a href="cookie-policy.html">Cookie Policy</a>
+                                </div>
                             </div>
                         </aside>
 
@@ -189,7 +226,8 @@
                                 <p>
                                     This may include information such as name, phone number, email address, ZIP code,
                                     selected service category, and project notes related to walk-in tub interests,
-                                    accessibility needs, bathroom layout, or similar request context.
+                                    accessibility needs, bathroom layout, comfort priorities, or similar request
+                                    context.
                                 </p>
                             </section>
 
@@ -201,8 +239,8 @@
                                     functionality, and help structure homeowner-provider matching flows.
                                 </p>
                                 <p>
-                                    We may also use information to understand how users interact with categories, legal
-                                    pages, and navigation elements in order to improve site clarity and usability.
+                                    Information may also be used to improve page layout, content flow, and interaction
+                                    quality across service categories, legal pages, and contact experiences.
                                 </p>
                             </section>
 
@@ -215,7 +253,7 @@
                                 </p>
                                 <p>
                                     Walk-in Tub Compare is an independent platform and is not a direct installer,
-                                    contractor, or remodeling company.
+                                    remodeling contractor, or bathroom-service company.
                                 </p>
                             </section>
 
@@ -227,7 +265,8 @@
                                     more consistent site performance.
                                 </p>
                                 <p>
-                                    For more details, please review the <a href="cookie-policy.html">Cookie Policy</a>.
+                                    For more information, please review the <a href="cookie-policy.html">Cookie
+                                        Policy</a>.
                                 </p>
                             </section>
 
@@ -235,30 +274,30 @@
                                 <h2>Information Sharing</h2>
                                 <p>
                                     Information may be shared where reasonably necessary to support platform operations,
-                                    user-request routing, quote-request handling, legal compliance, or service-provider
-                                    connection flows related to the purpose of the site.
+                                    quote-request handling, legal compliance, service-provider connection flows, or
+                                    related platform functions.
                                 </p>
                                 <p>
-                                    We do not describe the platform as directly performing contracted work, and all
-                                    contractors/providers remain independent.
+                                    All contractors/providers remain independent, and the platform does not represent
+                                    itself as directly performing the underlying work.
                                 </p>
                             </section>
 
                             <section id="data-security" class="legal-section">
                                 <h2>Data Security</h2>
                                 <p>
-                                    Reasonable efforts may be used to protect submitted information and maintain site
-                                    integrity. However, no platform, website, or transmission system can guarantee
-                                    absolute security.
+                                    Reasonable efforts may be used to help protect submitted information and maintain
+                                    general site integrity. However, no website, platform, or transmission system can
+                                    guarantee absolute security.
                                 </p>
                             </section>
 
                             <section id="your-choices" class="legal-section">
                                 <h2>Your Choices</h2>
                                 <p>
-                                    Users may choose whether to submit information through forms, whether to accept or
-                                    decline cookie preferences where available, and whether to contact the platform by
-                                    phone or email.
+                                    Users may choose whether to submit information through forms, whether to contact the
+                                    platform by email or phone, and whether to accept or decline cookie-related
+                                    preferences where that option is available.
                                 </p>
                             </section>
 
@@ -284,17 +323,21 @@
                 <div class="site-footer__top">
                     <div class="site-footer__brand">
                         <a class="site-logo site-logo--footer" href="index.html" aria-label="Walk-in Tub Compare home">
-                            <span class="site-logo__mark" aria-hidden="true"><i class="fa-solid fa-bath"></i></span>
+                            <span class="site-logo__mark" aria-hidden="true">
+                                <i class="fa-solid fa-bath"></i>
+                            </span>
                             <span class="site-logo__text">
                                 <span class="site-logo__title">Walk-in Tub Compare</span>
                                 <span class="site-logo__subtitle">Independent USA Matching Platform</span>
                             </span>
                         </a>
+
                         <p>
                             Walk-in Tub Compare is an independent platform built to help homeowners explore service
                             categories,
                             compare local provider options, and request quotes in a more organized way.
                         </p>
+
                         <div class="footer-badges" aria-label="Platform context">
                             <span>USA Service Area Context</span>
                             <span>Quote Request Path</span>
@@ -383,8 +426,12 @@
                 </div>
 
                 <div class="cookie-banner__actions">
-                    <button class="button button--secondary" type="button" data-cookie-action="decline">Decline</button>
-                    <button class="button button--primary" type="button" data-cookie-action="accept">Accept</button>
+                    <button class="button button--secondary" type="button" data-cookie-action="decline">
+                        Decline
+                    </button>
+                    <button class="button button--primary" type="button" data-cookie-action="accept">
+                        Accept
+                    </button>
                 </div>
             </div>
         </div>

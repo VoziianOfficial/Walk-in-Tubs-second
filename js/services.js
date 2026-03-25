@@ -1,93 +1,63 @@
 const servicesPageName = document.body.dataset.page;
 
-function initServicesPageAnimations() {
+function initServicesPage() {
     if (servicesPageName !== "services") return;
 
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    initServicesSwiper();
+    initServicesHeroAnimation();
+    initServicesParallax();
+    initServicesTiltCards();
+    initServicesSectionAnimations();
+}
 
-    const hasGsap = typeof window.gsap !== "undefined";
-    if (!hasGsap) return;
+function initServicesSwiper() {
+    const swiperElement = document.querySelector(".services-rail-swiper");
+    if (!swiperElement || typeof window.Swiper === "undefined") return;
+
+    new window.Swiper(swiperElement, {
+        slidesPerView: 1.12,
+        spaceBetween: 18,
+        speed: 900,
+        loop: true,
+        grabCursor: true,
+        navigation: {
+            nextEl: ".services-rail__button--next",
+            prevEl: ".services-rail__button--prev",
+        },
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1.35,
+                spaceBetween: 20,
+            },
+            900: {
+                slidesPerView: 1.8,
+                spaceBetween: 22,
+            },
+            1180: {
+                slidesPerView: 2.2,
+                spaceBetween: 24,
+            },
+        },
+    });
+}
+
+function initServicesHeroAnimation() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap) return;
 
     const { gsap } = window;
 
-    if (window.ScrollTrigger) {
-        gsap.registerPlugin(window.ScrollTrigger);
-    }
-
     const heroContent = document.querySelector(".services-hero__content");
     const heroVisual = document.querySelector(".services-hero__visual");
-    const heroPanel = document.querySelector(".services-hero__panel");
-    const heroImage = document.querySelector(".services-hero__panel img");
-    const heroBadges = document.querySelectorAll(".services-hero__badge");
-    const heroChips = document.querySelectorAll(".services-hero__chips li");
+    const heroImage = document.querySelector(".services-hero__media img");
+    const heroBadge = document.querySelector(".services-hero__badge");
+    const heroStats = document.querySelectorAll(".services-hero__stat");
 
-    const categoryCards = document.querySelectorAll(".services-category-card");
-    const comparisonCards = document.querySelectorAll(".comparison-mini-card");
-    const selectionCards = document.querySelectorAll(".selection-card");
-    const ctaPanel = document.querySelector(".services-cta__panel");
-
-    initServicesHero(gsap, {
-        heroContent,
-        heroVisual,
-        heroPanel,
-        heroImage,
-        heroBadges,
-        heroChips,
-    });
-
-    createServicesStagger(gsap, categoryCards, {
-        y: 24,
-        duration: 0.72,
-        stagger: 0.09,
-        start: "top 82%",
-    });
-
-    createServicesStagger(gsap, comparisonCards, {
-        x: 18,
-        duration: 0.72,
-        stagger: 0.12,
-        start: "top 84%",
-    });
-
-    createServicesStagger(gsap, selectionCards, {
-        y: 20,
-        duration: 0.68,
-        stagger: 0.1,
-        start: "top 85%",
-    });
-
-    if (ctaPanel && window.ScrollTrigger) {
-        gsap.fromTo(
-            ctaPanel,
-            {
-                y: 24,
-                opacity: 0,
-                scale: 0.988,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 0.85,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ctaPanel,
-                    start: "top 88%",
-                    once: true,
-                },
-            }
-        );
-    }
-
-    initServicesParallax(gsap, heroImage, heroBadges);
-    initServicesHover(gsap);
-}
-
-function initServicesHero(
-    gsap,
-    { heroContent, heroVisual, heroPanel, heroImage, heroBadges, heroChips }
-) {
     const tl = gsap.timeline({
         defaults: {
             ease: "power3.out",
@@ -98,13 +68,13 @@ function initServicesHero(
         tl.fromTo(
             Array.from(heroContent.children),
             {
-                y: 26,
+                y: 24,
                 opacity: 0,
             },
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.8,
+                duration: 0.82,
                 stagger: 0.1,
             }
         );
@@ -114,7 +84,7 @@ function initServicesHero(
         tl.fromTo(
             heroVisual,
             {
-                x: 30,
+                x: 28,
                 opacity: 0,
             },
             {
@@ -126,22 +96,6 @@ function initServicesHero(
         );
     }
 
-    if (heroPanel) {
-        tl.fromTo(
-            heroPanel,
-            {
-                scale: 0.975,
-                opacity: 0,
-            },
-            {
-                scale: 1,
-                opacity: 1,
-                duration: 0.95,
-            },
-            "-=0.65"
-        );
-    }
-
     if (heroImage) {
         tl.fromTo(
             heroImage,
@@ -150,16 +104,16 @@ function initServicesHero(
             },
             {
                 scale: 1.02,
-                duration: 1.35,
+                duration: 1.2,
                 ease: "power2.out",
             },
-            "-=1.05"
+            "-=0.95"
         );
     }
 
-    if (heroBadges.length) {
+    if (heroBadge) {
         tl.fromTo(
-            heroBadges,
+            heroBadge,
             {
                 y: 18,
                 opacity: 0,
@@ -167,32 +121,197 @@ function initServicesHero(
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.65,
-                stagger: 0.14,
+                duration: 0.62,
             },
-            "-=0.78"
+            "-=0.82"
         );
     }
 
-    if (heroChips.length) {
+    if (heroStats.length) {
         tl.fromTo(
-            heroChips,
+            heroStats,
             {
-                y: 10,
+                y: 14,
                 opacity: 0,
             },
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.45,
-                stagger: 0.05,
+                duration: 0.46,
+                stagger: 0.07,
             },
             "-=0.55"
         );
     }
 }
 
-function createServicesStagger(gsap, elements, options = {}) {
+function initServicesParallax() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroImage = document.querySelector(".services-hero__media img");
+    const heroBadge = document.querySelector(".services-hero__badge");
+
+    if (heroImage) {
+        gsap.to(heroImage, {
+            yPercent: 6,
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".services-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.85,
+            },
+        });
+    }
+
+    if (heroBadge) {
+        gsap.to(heroBadge, {
+            y: -16,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".services-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1,
+            },
+        });
+    }
+}
+
+function initServicesTiltCards() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const tiltTargets = document.querySelectorAll(
+        ".services-showcase-card, .services-testimonial-card, .editorial-note-card, .services-rail-card"
+    );
+
+    tiltTargets.forEach((card) => {
+        let frameId = null;
+
+        function resetCard() {
+            card.style.transform = "";
+            card.style.setProperty("--pointer-x", "50%");
+            card.style.setProperty("--pointer-y", "50%");
+        }
+
+        function onMove(event) {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - 0.5) * 8;
+            const rotateX = ((y / rect.height) - 0.5) * -8;
+
+            const pointerX = `${(x / rect.width) * 100}%`;
+            const pointerY = `${(y / rect.height) * 100}%`;
+
+            if (frameId) cancelAnimationFrame(frameId);
+
+            frameId = requestAnimationFrame(() => {
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                card.style.setProperty("--pointer-x", pointerX);
+                card.style.setProperty("--pointer-y", pointerY);
+            });
+        }
+
+        function onLeave() {
+            if (frameId) cancelAnimationFrame(frameId);
+            resetCard();
+        }
+
+        card.addEventListener("mousemove", onMove);
+        card.addEventListener("mouseleave", onLeave);
+    });
+}
+
+function initServicesSectionAnimations() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const showcaseCards = document.querySelectorAll(".services-catalog__grid .services-showcase-card");
+    const editorialCards = document.querySelectorAll(".editorial-note-card");
+    const testimonials = document.querySelectorAll(".services-testimonials__grid .services-testimonial-card");
+    const comparisonPanel = document.querySelector(".services-comparison__panel");
+    const ctaPanel = document.querySelector(".services-cta__panel");
+
+    createServicesReveal(gsap, showcaseCards, {
+        y: 30,
+        duration: 0.82,
+        stagger: 0.1,
+        start: "top 85%",
+    });
+
+    createServicesReveal(gsap, editorialCards, {
+        x: 22,
+        duration: 0.72,
+        stagger: 0.12,
+        start: "top 86%",
+    });
+
+    createServicesReveal(gsap, testimonials, {
+        y: 22,
+        duration: 0.68,
+        stagger: 0.1,
+        start: "top 86%",
+    });
+
+    if (comparisonPanel) {
+        gsap.fromTo(
+            comparisonPanel,
+            {
+                y: 24,
+                opacity: 0,
+                scale: 0.99,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.82,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: comparisonPanel,
+                    start: "top 88%",
+                    once: true,
+                },
+            }
+        );
+    }
+
+    if (ctaPanel) {
+        gsap.fromTo(
+            ctaPanel,
+            {
+                y: 24,
+                opacity: 0,
+                scale: 0.99,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.82,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ctaPanel,
+                    start: "top 88%",
+                    once: true,
+                },
+            }
+        );
+    }
+}
+
+function createServicesReveal(gsap, elements, options = {}) {
     if (!elements || !elements.length || !window.ScrollTrigger) return;
 
     const {
@@ -226,110 +345,14 @@ function createServicesStagger(gsap, elements, options = {}) {
     );
 }
 
-function initServicesParallax(gsap, heroImage, heroBadges) {
-    if (!window.ScrollTrigger) return;
-
-    if (heroImage) {
-        gsap.to(heroImage, {
-            yPercent: 5,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".services-hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.8,
-            },
-        });
-    }
-
-    if (heroBadges.length) {
-        heroBadges.forEach((badge, index) => {
-            gsap.to(badge, {
-                y: index % 2 === 0 ? -12 : 12,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".services-hero",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1,
-                },
-            });
-        });
-    }
-}
-
-function initServicesHover(gsap) {
-    const hoverCards = document.querySelectorAll(
-        ".services-category-card, .comparison-mini-card, .selection-card"
-    );
-
-    hoverCards.forEach((card) => {
-        const icon = card.querySelector(".services-category-card__icon, .selection-card__icon");
-
-        card.addEventListener("mouseenter", () => {
-            gsap.to(card, {
-                y: -4,
-                duration: 0.28,
-                ease: "power2.out",
-            });
-
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1.05,
-                    rotate: 2,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
-            }
-        });
-
-        card.addEventListener("mouseleave", () => {
-            gsap.to(card, {
-                y: 0,
-                duration: 0.28,
-                ease: "power2.out",
-            });
-
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1,
-                    rotate: 0,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
-            }
-        });
-    });
-
-    const buttons = document.querySelectorAll(".services-hero .button, .services-cta .button");
-
-    buttons.forEach((button) => {
-        button.addEventListener("mouseenter", () => {
-            gsap.to(button, {
-                y: -2,
-                duration: 0.22,
-                ease: "power2.out",
-            });
-        });
-
-        button.addEventListener("mouseleave", () => {
-            gsap.to(button, {
-                y: 0,
-                duration: 0.22,
-                ease: "power2.out",
-            });
-        });
-    });
-}
-
 window.addEventListener("page:ready", (event) => {
     if (event.detail?.page === "services") {
-        initServicesPageAnimations();
+        initServicesPage();
     }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
     if (servicesPageName === "services") {
-        initServicesPageAnimations();
+        initServicesPage();
     }
 });

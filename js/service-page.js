@@ -3,21 +3,19 @@ const servicePageName = document.body.dataset.page;
 function initServicePage() {
     if (servicePageName !== "service-page") return;
 
-    initServiceAnimations();
+    initServiceHeroAnimation();
+    initServiceParallax();
+    initServiceTiltCards();
+    initServiceSectionAnimations();
+    initServiceFaqAnimation();
+    initServiceButtonMicroMotion();
 }
 
-function initServiceAnimations() {
+function initServiceHeroAnimation() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
-    const hasGsap = typeof window.gsap !== "undefined";
-    if (!hasGsap) return;
+    if (prefersReducedMotion || !window.gsap) return;
 
     const { gsap } = window;
-
-    if (window.ScrollTrigger) {
-        gsap.registerPlugin(window.ScrollTrigger);
-    }
 
     const heroContent = document.querySelector(".service-hero__content");
     const heroVisual = document.querySelector(".service-hero__visual");
@@ -26,51 +24,227 @@ function initServiceAnimations() {
     const heroCards = document.querySelectorAll(".service-hero__card");
     const heroChips = document.querySelectorAll(".service-hero__chips li");
 
+    const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+    });
+
+    if (heroContent) {
+        tl.fromTo(
+            Array.from(heroContent.children),
+            {
+                y: 24,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.82,
+                stagger: 0.1,
+            }
+        );
+    }
+
+    if (heroVisual) {
+        tl.fromTo(
+            heroVisual,
+            {
+                x: 28,
+                opacity: 0,
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.9,
+            },
+            "-=0.55"
+        );
+    }
+
+    if (heroPanel) {
+        tl.fromTo(
+            heroPanel,
+            {
+                scale: 0.98,
+                opacity: 0,
+            },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 0.95,
+            },
+            "-=0.75"
+        );
+    }
+
+    if (heroImage) {
+        tl.fromTo(
+            heroImage,
+            {
+                scale: 1.08,
+            },
+            {
+                scale: 1.02,
+                duration: 1.2,
+                ease: "power2.out",
+            },
+            "-=1.05"
+        );
+    }
+
+    if (heroCards.length) {
+        tl.fromTo(
+            heroCards,
+            {
+                y: 18,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.62,
+                stagger: 0.12,
+            },
+            "-=0.8"
+        );
+    }
+
+    if (heroChips.length) {
+        tl.fromTo(
+            heroChips,
+            {
+                y: 10,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.45,
+                stagger: 0.05,
+            },
+            "-=0.45"
+        );
+    }
+}
+
+function initServiceParallax() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroImage = document.querySelector(".service-hero__panel img");
+    const heroCards = document.querySelectorAll(".service-hero__card");
+
+    if (heroImage) {
+        gsap.to(heroImage, {
+            yPercent: 5,
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".service-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.85,
+            },
+        });
+    }
+
+    if (heroCards.length) {
+        heroCards.forEach((card, index) => {
+            gsap.to(card, {
+                y: index % 2 === 0 ? -14 : 14,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".service-hero",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1,
+                },
+            });
+        });
+    }
+}
+
+function initServiceTiltCards() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const tiltTargets = document.querySelectorAll(
+        ".service-mini-card, .service-detail-card, .related-card, .service-factor-panel, .service-cta__panel"
+    );
+
+    tiltTargets.forEach((card) => {
+        let frameId = null;
+
+        function resetCard() {
+            card.style.transform = "";
+            card.style.setProperty("--pointer-x", "50%");
+            card.style.setProperty("--pointer-y", "50%");
+        }
+
+        function onMove(event) {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - 0.5) * 8;
+            const rotateX = ((y / rect.height) - 0.5) * -8;
+
+            if (frameId) cancelAnimationFrame(frameId);
+
+            frameId = requestAnimationFrame(() => {
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                card.style.setProperty("--pointer-x", `${(x / rect.width) * 100}%`);
+                card.style.setProperty("--pointer-y", `${(y / rect.height) * 100}%`);
+            });
+        }
+
+        function onLeave() {
+            if (frameId) cancelAnimationFrame(frameId);
+            resetCard();
+        }
+
+        card.addEventListener("mousemove", onMove);
+        card.addEventListener("mouseleave", onLeave);
+    });
+}
+
+function initServiceSectionAnimations() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
     const miniCards = document.querySelectorAll(".service-mini-card");
     const detailCards = document.querySelectorAll(".service-detail-card");
     const relatedCards = document.querySelectorAll(".related-card");
-    const faqItems = document.querySelectorAll(".faq-list .faq-item");
     const factorPanel = document.querySelector(".service-factor-panel");
     const ctaPanel = document.querySelector(".service-cta__panel");
 
-    initServiceHero(gsap, {
-        heroContent,
-        heroVisual,
-        heroPanel,
-        heroImage,
-        heroCards,
-        heroChips,
-    });
-
-    createServiceStagger(gsap, miniCards, {
-        x: 18,
-        duration: 0.72,
-        stagger: 0.12,
-        start: "top 84%",
-    });
-
-    createServiceStagger(gsap, detailCards, {
-        y: 22,
+    createServiceReveal(gsap, miniCards, {
+        x: 20,
         duration: 0.72,
         stagger: 0.1,
-        start: "top 84%",
+        start: "top 86%",
     });
 
-    createServiceStagger(gsap, relatedCards, {
+    createServiceReveal(gsap, detailCards, {
+        y: 22,
+        duration: 0.74,
+        stagger: 0.09,
+        start: "top 85%",
+    });
+
+    createServiceReveal(gsap, relatedCards, {
         y: 20,
         duration: 0.68,
         stagger: 0.1,
         start: "top 86%",
     });
 
-    createServiceStagger(gsap, faqItems, {
-        y: 18,
-        duration: 0.55,
-        stagger: 0.08,
-        start: "top 88%",
-    });
-
-    if (factorPanel && window.ScrollTrigger) {
+    if (factorPanel) {
         gsap.fromTo(
             factorPanel,
             {
@@ -93,7 +267,7 @@ function initServiceAnimations() {
         );
     }
 
-    if (ctaPanel && window.ScrollTrigger) {
+    if (ctaPanel) {
         gsap.fromTo(
             ctaPanel,
             {
@@ -115,117 +289,9 @@ function initServiceAnimations() {
             }
         );
     }
-
-    initServiceParallax(gsap, heroImage, heroCards);
-    initServiceHover(gsap);
 }
 
-function initServiceHero(gsap, { heroContent, heroVisual, heroPanel, heroImage, heroCards, heroChips }) {
-    const tl = gsap.timeline({
-        defaults: {
-            ease: "power3.out",
-        },
-    });
-
-    if (heroContent) {
-        tl.fromTo(
-            Array.from(heroContent.children),
-            {
-                y: 26,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.1,
-            }
-        );
-    }
-
-    if (heroVisual) {
-        tl.fromTo(
-            heroVisual,
-            {
-                x: 30,
-                opacity: 0,
-            },
-            {
-                x: 0,
-                opacity: 1,
-                duration: 0.9,
-            },
-            "-=0.55"
-        );
-    }
-
-    if (heroPanel) {
-        tl.fromTo(
-            heroPanel,
-            {
-                scale: 0.975,
-                opacity: 0,
-            },
-            {
-                scale: 1,
-                opacity: 1,
-                duration: 0.95,
-            },
-            "-=0.65"
-        );
-    }
-
-    if (heroImage) {
-        tl.fromTo(
-            heroImage,
-            {
-                scale: 1.08,
-            },
-            {
-                scale: 1.02,
-                duration: 1.35,
-                ease: "power2.out",
-            },
-            "-=1.05"
-        );
-    }
-
-    if (heroCards.length) {
-        tl.fromTo(
-            heroCards,
-            {
-                y: 18,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.65,
-                stagger: 0.14,
-            },
-            "-=0.78"
-        );
-    }
-
-    if (heroChips.length) {
-        tl.fromTo(
-            heroChips,
-            {
-                y: 10,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.45,
-                stagger: 0.05,
-            },
-            "-=0.55"
-        );
-    }
-}
-
-function createServiceStagger(gsap, elements, options = {}) {
+function createServiceReveal(gsap, elements, options = {}) {
     if (!elements || !elements.length || !window.ScrollTrigger) return;
 
     const {
@@ -259,82 +325,45 @@ function createServiceStagger(gsap, elements, options = {}) {
     );
 }
 
-function initServiceParallax(gsap, heroImage, heroCards) {
-    if (!window.ScrollTrigger) return;
+function initServiceFaqAnimation() {
+    const faqItems = document.querySelectorAll(".faq-item");
+    if (!faqItems.length) return;
 
-    if (heroImage) {
-        gsap.to(heroImage, {
-            yPercent: 5,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".service-hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.8,
-            },
-        });
-    }
+    faqItems.forEach((item) => {
+        const button = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
 
-    if (heroCards.length) {
-        heroCards.forEach((card, index) => {
-            gsap.to(card, {
-                y: index % 2 === 0 ? -12 : 12,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".service-hero",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1,
-                },
-            });
-        });
-    }
-}
+        if (!button || !answer) return;
 
-function initServiceHover(gsap) {
-    const hoverCards = document.querySelectorAll(
-        ".service-mini-card, .service-detail-card, .related-card"
-    );
+        button.addEventListener("click", () => {
+            const isExpanded = button.getAttribute("aria-expanded") === "true";
 
-    hoverCards.forEach((card) => {
-        const icon = card.querySelector(".service-detail-card__icon");
-
-        card.addEventListener("mouseenter", () => {
-            gsap.to(card, {
-                y: -4,
-                duration: 0.28,
-                ease: "power2.out",
-            });
-
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1.05,
-                    rotate: 2,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
-            }
-        });
-
-        card.addEventListener("mouseleave", () => {
-            gsap.to(card, {
-                y: 0,
-                duration: 0.28,
-                ease: "power2.out",
-            });
-
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1,
-                    rotate: 0,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
+            if (window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                if (!isExpanded) {
+                    window.gsap.fromTo(
+                        answer,
+                        {
+                            y: 8,
+                            opacity: 0,
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.32,
+                            ease: "power2.out",
+                        }
+                    );
+                }
             }
         });
     });
+}
 
-    const buttons = document.querySelectorAll(".service-hero .button, .service-cta .button");
+function initServiceButtonMicroMotion() {
+    if (!window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const { gsap } = window;
+    const buttons = document.querySelectorAll(".service-hero .button, .service-cta .button, .related-card a");
 
     buttons.forEach((button) => {
         button.addEventListener("mouseenter", () => {

@@ -3,151 +3,257 @@ const contactPageName = document.body.dataset.page;
 function initContactPage() {
     if (contactPageName !== "contact") return;
 
+    initContactHeroAnimation();
+    initContactParallax();
+    initContactTiltCards();
+    initContactSectionAnimations();
     initContactForm();
-    initContactAnimations();
     initSuccessModal();
 }
 
-function initContactForm() {
-    const form = document.getElementById("contact-form");
-    if (!form) return;
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        form.reset();
-        openSuccessModal();
-    });
-}
-
-function initSuccessModal() {
-    const modal = document.getElementById("success-modal");
-    const closeButton = document.getElementById("success-modal-close");
-    const actionButton = document.getElementById("success-modal-button");
-    const backdrop = modal?.querySelector(".success-modal__backdrop");
-
-    if (!modal) return;
-
-    closeButton?.addEventListener("click", closeSuccessModal);
-    actionButton?.addEventListener("click", closeSuccessModal);
-    backdrop?.addEventListener("click", closeSuccessModal);
-
-    window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && modal.classList.contains("is-visible")) {
-            closeSuccessModal();
-        }
-    });
-}
-
-function openSuccessModal() {
-    const modal = document.getElementById("success-modal");
-    if (!modal) return;
-
-    modal.hidden = false;
-    modal.classList.add("is-visible");
-    document.body.classList.add("cookie-modal-open");
-}
-
-function closeSuccessModal() {
-    const modal = document.getElementById("success-modal");
-    if (!modal) return;
-
-    modal.classList.remove("is-visible");
-    modal.hidden = true;
-    document.body.classList.remove("cookie-modal-open");
-}
-
-function initContactAnimations() {
-    if (contactPageName !== "contact") return;
-
+function initContactHeroAnimation() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
-    const hasGsap = typeof window.gsap !== "undefined";
-    if (!hasGsap) return;
+    if (prefersReducedMotion || !window.gsap) return;
 
     const { gsap } = window;
 
-    if (window.ScrollTrigger) {
-        gsap.registerPlugin(window.ScrollTrigger);
-    }
-
     const heroContent = document.querySelector(".contact-hero__content");
     const heroVisual = document.querySelector(".contact-hero__visual");
-    const heroPanel = document.querySelector(".contact-hero__panel");
-    const heroImage = document.querySelector(".contact-hero__panel img");
-    const heroCards = document.querySelectorAll(".contact-hero__card");
-    const heroHighlights = document.querySelectorAll(".contact-hero__highlights li");
+    const heroImage = document.querySelector(".contact-hero__image img");
+    const heroNote = document.querySelector(".contact-hero__note");
+    const quickCards = document.querySelectorAll(".contact-hero__quick-card");
 
-    const optionCards = document.querySelectorAll(".contact-option-card");
-    const sideCards = document.querySelectorAll(".contact-side-panel__card");
-    const mapCard = document.querySelector(".contact-map__card");
-    const mapSide = document.querySelector(".contact-map__side");
-    const reassurancePanel = document.querySelector(".contact-reassurance__panel");
-
-    initContactHero(gsap, {
-        heroContent,
-        heroVisual,
-        heroPanel,
-        heroImage,
-        heroCards,
-        heroHighlights,
+    const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
     });
 
-    createContactStagger(gsap, optionCards, {
-        y: 24,
-        duration: 0.72,
-        stagger: 0.1,
-        start: "top 84%",
-    });
-
-    createContactStagger(gsap, sideCards, {
-        x: 18,
-        duration: 0.72,
-        stagger: 0.12,
-        start: "top 84%",
-    });
-
-    if (mapCard && window.ScrollTrigger) {
-        gsap.fromTo(
-            mapCard,
+    if (heroContent) {
+        tl.fromTo(
+            Array.from(heroContent.children),
             {
-                y: 26,
+                y: 24,
                 opacity: 0,
             },
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.9,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: mapCard,
-                    start: "top 84%",
-                    once: true,
-                },
+                duration: 0.82,
+                stagger: 0.1,
             }
         );
     }
 
-    if (mapSide && window.ScrollTrigger) {
-        gsap.fromTo(
-            mapSide,
+    if (heroVisual) {
+        tl.fromTo(
+            heroVisual,
             {
-                x: 24,
+                x: 28,
                 opacity: 0,
             },
             {
                 x: 0,
                 opacity: 1,
-                duration: 0.8,
+                duration: 0.9,
+            },
+            "-=0.55"
+        );
+    }
+
+    if (heroImage) {
+        tl.fromTo(
+            heroImage,
+            {
+                scale: 1.08,
+            },
+            {
+                scale: 1.02,
+                duration: 1.18,
+                ease: "power2.out",
+            },
+            "-=1"
+        );
+    }
+
+    if (heroNote) {
+        tl.fromTo(
+            heroNote,
+            {
+                y: 18,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.62,
+            },
+            "-=0.8"
+        );
+    }
+
+    if (quickCards.length) {
+        tl.fromTo(
+            quickCards,
+            {
+                y: 12,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.45,
+                stagger: 0.07,
+            },
+            "-=0.55"
+        );
+    }
+}
+
+function initContactParallax() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroImage = document.querySelector(".contact-hero__image img");
+    const heroNote = document.querySelector(".contact-hero__note");
+    const sideImage = document.querySelector(".contact-side-card--image img");
+
+    if (heroImage) {
+        gsap.to(heroImage, {
+            yPercent: 6,
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".contact-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.85,
+            },
+        });
+    }
+
+    if (heroNote) {
+        gsap.to(heroNote, {
+            y: -14,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".contact-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1,
+            },
+        });
+    }
+
+    if (sideImage) {
+        gsap.to(sideImage, {
+            yPercent: 5,
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".contact-form-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.85,
+            },
+        });
+    }
+}
+
+function initContactTiltCards() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const tiltTargets = document.querySelectorAll(
+        ".contact-option-card, .contact-side-card, .contact-map__aside-card, .contact-hero__quick-card"
+    );
+
+    tiltTargets.forEach((card) => {
+        let frameId = null;
+
+        function resetCard() {
+            card.style.transform = "";
+            card.style.setProperty("--pointer-x", "50%");
+            card.style.setProperty("--pointer-y", "50%");
+        }
+
+        function onMove(event) {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - 0.5) * 8;
+            const rotateX = ((y / rect.height) - 0.5) * -8;
+
+            if (frameId) cancelAnimationFrame(frameId);
+
+            frameId = requestAnimationFrame(() => {
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                card.style.setProperty("--pointer-x", `${(x / rect.width) * 100}%`);
+                card.style.setProperty("--pointer-y", `${(y / rect.height) * 100}%`);
+            });
+        }
+
+        function onLeave() {
+            if (frameId) cancelAnimationFrame(frameId);
+            resetCard();
+        }
+
+        card.addEventListener("mousemove", onMove);
+        card.addEventListener("mouseleave", onLeave);
+    });
+}
+
+function initContactSectionAnimations() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const optionCards = document.querySelectorAll(".contact-options__grid .contact-option-card");
+    const sideCards = document.querySelectorAll(".contact-side-panel .contact-side-card");
+    const mapAsideCards = document.querySelectorAll(".contact-map__aside .contact-map__aside-card");
+    const formPanel = document.querySelector(".contact-form-panel");
+    const mapCard = document.querySelector(".contact-map__card");
+    const clarityPanel = document.querySelector(".contact-clarity__panel");
+
+    createContactReveal(gsap, optionCards, {
+        y: 24,
+        duration: 0.76,
+        stagger: 0.1,
+        start: "top 86%",
+    });
+
+    createContactReveal(gsap, sideCards, {
+        x: 22,
+        duration: 0.72,
+        stagger: 0.1,
+        start: "top 86%",
+    });
+
+    createContactReveal(gsap, mapAsideCards, {
+        x: 20,
+        duration: 0.7,
+        stagger: 0.1,
+        start: "top 86%",
+    });
+
+    if (formPanel) {
+        gsap.fromTo(
+            formPanel,
+            {
+                y: 24,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.82,
                 ease: "power3.out",
                 scrollTrigger: {
-                    trigger: mapSide,
+                    trigger: formPanel,
                     start: "top 88%",
                     once: true,
                 },
@@ -155,9 +261,32 @@ function initContactAnimations() {
         );
     }
 
-    if (reassurancePanel && window.ScrollTrigger) {
+    if (mapCard) {
         gsap.fromTo(
-            reassurancePanel,
+            mapCard,
+            {
+                y: 24,
+                opacity: 0,
+                scale: 0.995,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.82,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: mapCard,
+                    start: "top 88%",
+                    once: true,
+                },
+            }
+        );
+    }
+
+    if (clarityPanel) {
+        gsap.fromTo(
+            clarityPanel,
             {
                 y: 24,
                 opacity: 0,
@@ -170,124 +299,16 @@ function initContactAnimations() {
                 duration: 0.82,
                 ease: "power3.out",
                 scrollTrigger: {
-                    trigger: reassurancePanel,
+                    trigger: clarityPanel,
                     start: "top 88%",
                     once: true,
                 },
             }
         );
     }
-
-    initContactParallax(gsap, heroImage, heroCards, mapCard);
-    initContactHover(gsap);
 }
 
-function initContactHero(gsap, { heroContent, heroVisual, heroPanel, heroImage, heroCards, heroHighlights }) {
-    const tl = gsap.timeline({
-        defaults: {
-            ease: "power3.out",
-        },
-    });
-
-    if (heroContent) {
-        tl.fromTo(
-            Array.from(heroContent.children),
-            {
-                y: 26,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.1,
-            }
-        );
-    }
-
-    if (heroVisual) {
-        tl.fromTo(
-            heroVisual,
-            {
-                x: 30,
-                opacity: 0,
-            },
-            {
-                x: 0,
-                opacity: 1,
-                duration: 0.9,
-            },
-            "-=0.55"
-        );
-    }
-
-    if (heroPanel) {
-        tl.fromTo(
-            heroPanel,
-            {
-                scale: 0.975,
-                opacity: 0,
-            },
-            {
-                scale: 1,
-                opacity: 1,
-                duration: 0.95,
-            },
-            "-=0.65"
-        );
-    }
-
-    if (heroImage) {
-        tl.fromTo(
-            heroImage,
-            {
-                scale: 1.08,
-            },
-            {
-                scale: 1.02,
-                duration: 1.35,
-                ease: "power2.out",
-            },
-            "-=1.05"
-        );
-    }
-
-    if (heroCards.length) {
-        tl.fromTo(
-            heroCards,
-            {
-                y: 18,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.65,
-                stagger: 0.14,
-            },
-            "-=0.78"
-        );
-    }
-
-    if (heroHighlights.length) {
-        tl.fromTo(
-            heroHighlights,
-            {
-                y: 10,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.5,
-                stagger: 0.08,
-            },
-            "-=0.55"
-        );
-    }
-}
-
-function createContactStagger(gsap, elements, options = {}) {
+function createContactReveal(gsap, elements, options = {}) {
     if (!elements || !elements.length || !window.ScrollTrigger) return;
 
     const {
@@ -321,118 +342,67 @@ function createContactStagger(gsap, elements, options = {}) {
     );
 }
 
-function initContactParallax(gsap, heroImage, heroCards, mapCard) {
-    if (!window.ScrollTrigger) return;
+/* =========================
+   FORM + MODAL
+========================= */
+function initContactForm() {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
 
-    if (heroImage) {
-        gsap.to(heroImage, {
-            yPercent: 5,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".contact-hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.8,
-            },
-        });
-    }
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-    if (heroCards.length) {
-        heroCards.forEach((card, index) => {
-            gsap.to(card, {
-                y: index % 2 === 0 ? -12 : 12,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".contact-hero",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1,
-                },
-            });
-        });
-    }
-
-    if (mapCard) {
-        const overlay = mapCard.querySelector(".contact-map__overlay");
-        if (overlay) {
-            gsap.to(overlay, {
-                y: -10,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: mapCard,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1,
-                },
-            });
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
         }
-    }
+
+        showSuccessModal();
+        form.reset();
+    });
 }
 
-function initContactHover(gsap) {
-    const hoverCards = document.querySelectorAll(
-        ".contact-option-card, .contact-side-panel__card, .contact-map__side"
-    );
+function initSuccessModal() {
+    const modal = document.getElementById("success-modal");
+    const closeButton = document.getElementById("success-modal-close");
+    const actionButton = document.getElementById("success-modal-button");
+    const backdrop = modal?.querySelector(".success-modal__backdrop");
 
-    hoverCards.forEach((card) => {
-        const icon = card.querySelector(
-            ".contact-option-card__icon, .contact-map__side-icon"
-        );
+    if (!modal) return;
 
-        card.addEventListener("mouseenter", () => {
-            gsap.to(card, {
-                y: -4,
-                duration: 0.28,
-                ease: "power2.out",
-            });
+    closeButton?.addEventListener("click", hideSuccessModal);
+    actionButton?.addEventListener("click", hideSuccessModal);
+    backdrop?.addEventListener("click", hideSuccessModal);
 
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1.05,
-                    rotate: 2,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
-            }
-        });
-
-        card.addEventListener("mouseleave", () => {
-            gsap.to(card, {
-                y: 0,
-                duration: 0.28,
-                ease: "power2.out",
-            });
-
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1,
-                    rotate: 0,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
-            }
-        });
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-visible")) {
+            hideSuccessModal();
+        }
     });
+}
 
-    const buttons = document.querySelectorAll(".contact-hero .button, .contact-form .button");
+function showSuccessModal() {
+    const modal = document.getElementById("success-modal");
+    if (!modal) return;
 
-    buttons.forEach((button) => {
-        button.addEventListener("mouseenter", () => {
-            gsap.to(button, {
-                y: -2,
-                duration: 0.22,
-                ease: "power2.out",
-            });
-        });
+    modal.hidden = false;
+    document.body.classList.add("cookie-modal-open");
 
-        button.addEventListener("mouseleave", () => {
-            gsap.to(button, {
-                y: 0,
-                duration: 0.22,
-                ease: "power2.out",
-            });
-        });
+    requestAnimationFrame(() => {
+        modal.classList.add("is-visible");
     });
+}
+
+function hideSuccessModal() {
+    const modal = document.getElementById("success-modal");
+    if (!modal) return;
+
+    modal.classList.remove("is-visible");
+    document.body.classList.remove("cookie-modal-open");
+
+    window.setTimeout(() => {
+        modal.hidden = true;
+    }, 380);
 }
 
 window.addEventListener("page:ready", (event) => {

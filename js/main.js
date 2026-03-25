@@ -1,4 +1,6 @@
 const body = document.body;
+const html = document.documentElement;
+
 const header = document.getElementById("site-header");
 const progressBar = document.querySelector(".site-progress");
 
@@ -14,7 +16,10 @@ const cookieButtons = document.querySelectorAll("[data-cookie-action]");
 const faqRoots = document.querySelectorAll("[data-faq-root]");
 const revealItems = document.querySelectorAll("[data-reveal]");
 
+const themeToggle = document.querySelector("[data-theme-toggle]");
+
 const COOKIE_STORAGE_KEY = "walkInTubCompareCookieConsent";
+const THEME_STORAGE_KEY = "walkInTubCompareTheme";
 const MOBILE_BREAKPOINT = 1024;
 
 /* =========================
@@ -33,13 +38,11 @@ function isDesktopViewport() {
 }
 
 /* =========================
-   HEADER SCROLL STATE
+   HEADER / PROGRESS
 ========================= */
 function updateHeaderState() {
     if (!header) return;
-
-    const scrolled = window.scrollY > 16;
-    header.classList.toggle("is-scrolled", scrolled);
+    header.classList.toggle("is-scrolled", window.scrollY > 16);
 }
 
 function updateProgressBar() {
@@ -94,19 +97,11 @@ function initMobileMenu() {
     if (!navToggle || !mobileMenu) return;
 
     navToggle.addEventListener("click", toggleMobileMenu);
-
-    if (mobileMenuClose) {
-        mobileMenuClose.addEventListener("click", closeMobileMenu);
-    }
-
-    if (mobileMenuBackdrop) {
-        mobileMenuBackdrop.addEventListener("click", closeMobileMenu);
-    }
+    mobileMenuClose?.addEventListener("click", closeMobileMenu);
+    mobileMenuBackdrop?.addEventListener("click", closeMobileMenu);
 
     mobileMenuLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            closeMobileMenu();
-        });
+        link.addEventListener("click", closeMobileMenu);
     });
 
     window.addEventListener("resize", () => {
@@ -117,12 +112,66 @@ function initMobileMenu() {
 }
 
 /* =========================
+   THEME TOGGLE
+========================= */
+function getSavedTheme() {
+    try {
+        return localStorage.getItem(THEME_STORAGE_KEY);
+    } catch {
+        return null;
+    }
+}
+
+function saveTheme(theme) {
+    try {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch {
+        /* ignore */
+    }
+}
+
+function getPreferredTheme() {
+    const savedTheme = getSavedTheme();
+    if (savedTheme === "light" || savedTheme === "dark") {
+        return savedTheme;
+    }
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+    html.setAttribute("data-theme", theme);
+
+    if (!themeToggle) return;
+
+    const label = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+    themeToggle.setAttribute("aria-label", label);
+}
+
+function toggleTheme() {
+    const currentTheme = html.getAttribute("data-theme") || "light";
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+    applyTheme(nextTheme);
+    saveTheme(nextTheme);
+}
+
+function initThemeToggle() {
+    const theme = getPreferredTheme();
+    applyTheme(theme);
+
+    if (!themeToggle) return;
+    themeToggle.addEventListener("click", toggleTheme);
+}
+
+/* =========================
    COOKIE CONSENT
 ========================= */
 function getCookieConsent() {
     try {
         return localStorage.getItem(COOKIE_STORAGE_KEY);
-    } catch (error) {
+    } catch {
         return null;
     }
 }
@@ -130,30 +179,30 @@ function getCookieConsent() {
 function setCookieConsent(value) {
     try {
         localStorage.setItem(COOKIE_STORAGE_KEY, value);
-    } catch (error) {
-        // ignore storage errors
+    } catch {
+        /* ignore */
     }
 }
 
 function showCookieBanner() {
     if (!cookieBanner) return;
-
     cookieBanner.hidden = false;
-    cookieBanner.classList.add("is-visible");
+    requestAnimationFrame(() => cookieBanner.classList.add("is-visible"));
 }
 
 function hideCookieBanner() {
     if (!cookieBanner) return;
-
     cookieBanner.classList.remove("is-visible");
-    cookieBanner.hidden = true;
+
+    window.setTimeout(() => {
+        cookieBanner.hidden = true;
+    }, 380);
 }
 
 function initCookieBanner() {
     if (!cookieBanner) return;
 
     const consent = getCookieConsent();
-
     if (!consent) {
         showCookieBanner();
     }
@@ -161,16 +210,10 @@ function initCookieBanner() {
     cookieButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const action = button.dataset.cookieAction;
-
             if (!action) return;
 
-            if (action === "accept") {
-                setCookieConsent("accepted");
-            }
-
-            if (action === "decline") {
-                setCookieConsent("declined");
-            }
+            if (action === "accept") setCookieConsent("accepted");
+            if (action === "decline") setCookieConsent("declined");
 
             hideCookieBanner();
         });
@@ -178,7 +221,7 @@ function initCookieBanner() {
 }
 
 /* =========================
-   FAQ ACCORDION
+   FAQ
 ========================= */
 function closeFaqItem(item) {
     if (!item) return;
@@ -214,16 +257,13 @@ function initFaqAccordion() {
 
         items.forEach((item) => {
             const button = item.querySelector(".faq-question");
-
             if (!button) return;
 
             button.addEventListener("click", () => {
                 const isExpanded = button.getAttribute("aria-expanded") === "true";
 
                 items.forEach((otherItem) => {
-                    if (otherItem !== item) {
-                        closeFaqItem(otherItem);
-                    }
+                    if (otherItem !== item) closeFaqItem(otherItem);
                 });
 
                 if (isExpanded) {
@@ -237,7 +277,7 @@ function initFaqAccordion() {
 }
 
 /* =========================
-   REVEAL ON SCROLL
+   REVEAL
 ========================= */
 function initRevealObserver() {
     if (!revealItems.length) return;
@@ -275,7 +315,7 @@ function initRevealObserver() {
 }
 
 /* =========================
-   GLOBAL EVENTS
+   EVENTS
 ========================= */
 function handleGlobalKeydown(event) {
     if (event.key === "Escape") {
@@ -289,18 +329,17 @@ function handleScroll() {
 }
 
 /* =========================
-   PAGE INIT SUPPORT
+   PAGE READY
 ========================= */
 function initPageScript() {
     const page = body.dataset.page;
-
     if (!page) return;
 
-    const globalPageEvent = new CustomEvent("page:ready", {
+    const event = new CustomEvent("page:ready", {
         detail: { page },
     });
 
-    window.dispatchEvent(globalPageEvent);
+    window.dispatchEvent(event);
 }
 
 /* =========================
@@ -318,6 +357,8 @@ function initGsapDefaults() {
    INIT
 ========================= */
 function init() {
+    initThemeToggle();
+
     updateHeaderState();
     updateProgressBar();
 

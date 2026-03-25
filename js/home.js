@@ -1,209 +1,281 @@
-const pageName = document.body.dataset.page;
+const homePageName = document.body.dataset.page;
 
-function initHomeAnimations() {
-    if (pageName !== "home") return;
+function initHomePage() {
+    if (homePageName !== "home") return;
 
-    const heroContent = document.querySelector(".hero-section__content");
-    const heroVisual = document.querySelector(".hero-section__visual");
-    const heroPanel = document.querySelector(".hero-panel--main");
-    const heroImage = document.querySelector(".hero-panel--main img");
-    const heroFloatingCards = document.querySelectorAll(".hero-floating-card");
-    const highlightItems = document.querySelectorAll(".hero-section__highlights li");
-
-    const benefitsCards = document.querySelectorAll(".benefits-grid .info-card");
-    const serviceCards = document.querySelectorAll(".services-preview__grid .service-card");
-    const processCards = document.querySelectorAll(".process-grid .step-card");
-    const reassuranceCards = document.querySelectorAll(".reassurance-cards .stat-card");
-    const faqItems = document.querySelectorAll(".faq-list .faq-item");
-
-    const ctaPanel = document.querySelector(".cta-panel");
-    const coverageMapCard = document.querySelector(".coverage-map-card");
-    const coverageSideCard = document.querySelector(".coverage-side-card");
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const hasGsap = typeof window.gsap !== "undefined";
-
-    if (prefersReducedMotion) return;
-
-    if (!hasGsap) {
-        initHomeHoverFallbacks();
-        return;
-    }
-
-    const { gsap } = window;
-
-    if (window.ScrollTrigger) {
-        gsap.registerPlugin(window.ScrollTrigger);
-    }
-
-    initHeroIntro(gsap, {
-        heroContent,
-        heroVisual,
-        heroPanel,
-        heroImage,
-        heroFloatingCards,
-        highlightItems,
-    });
-
-    initSectionStaggers(gsap, benefitsCards, serviceCards, processCards, reassuranceCards, faqItems);
-    initCtaAnimation(gsap, ctaPanel);
-    initCoverageAnimation(gsap, coverageMapCard, coverageSideCard);
-    initParallaxDetails(gsap, heroImage, heroFloatingCards, coverageMapCard);
-    initHomeHoverEffects(gsap);
+    initHomeSwiper();
+    initHomeHeroParallax();
+    initHomeTiltCards();
+    initHomeGlowTracking();
+    initHomeSectionAnimations();
 }
 
-function initHeroIntro(
-    gsap,
-    { heroContent, heroVisual, heroPanel, heroImage, heroFloatingCards, highlightItems }
-) {
-    const heroTimeline = gsap.timeline({
-        defaults: {
-            ease: "power3.out",
+function initHomeSwiper() {
+    const swiperElement = document.querySelector(".home-rail-swiper");
+    if (!swiperElement || typeof window.Swiper === "undefined") return;
+
+    new window.Swiper(swiperElement, {
+        slidesPerView: 1.12,
+        spaceBetween: 18,
+        speed: 850,
+        grabCursor: true,
+        loop: true,
+        centeredSlides: false,
+        parallax: true,
+        navigation: {
+            nextEl: ".home-rail__button--next",
+            prevEl: ".home-rail__button--prev",
+        },
+        autoplay: {
+            delay: 3400,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1.35,
+                spaceBetween: 20,
+            },
+            900: {
+                slidesPerView: 1.8,
+                spaceBetween: 22,
+            },
+            1180: {
+                slidesPerView: 2.25,
+                spaceBetween: 24,
+            },
         },
     });
+}
+
+function initHomeHeroParallax() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroImage = document.querySelector(".hero-panel--main img");
+    const floatingCards = document.querySelectorAll(".hero-floating-card");
+    const heroContent = document.querySelector(".hero-section__content");
+    const heroHighlights = document.querySelectorAll(".hero-section__highlights li");
+
+    if (heroImage) {
+        gsap.to(heroImage, {
+            yPercent: 6,
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.85,
+            },
+        });
+    }
+
+    if (floatingCards.length) {
+        floatingCards.forEach((card, index) => {
+            gsap.to(card, {
+                y: index % 2 === 0 ? -16 : 16,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".hero-section",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1.1,
+                },
+            });
+        });
+    }
 
     if (heroContent) {
         const heroChildren = Array.from(heroContent.children);
 
-        heroTimeline.fromTo(
+        gsap.fromTo(
             heroChildren,
             {
-                y: 28,
+                y: 24,
                 opacity: 0,
             },
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.8,
+                duration: 0.9,
                 stagger: 0.1,
+                ease: "power3.out",
             }
         );
     }
 
-    if (heroVisual) {
-        heroTimeline.fromTo(
-            heroVisual,
+    if (heroHighlights.length) {
+        gsap.fromTo(
+            heroHighlights,
             {
-                x: 30,
+                y: 12,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.45,
+                stagger: 0.06,
+                ease: "power2.out",
+                delay: 0.35,
+            }
+        );
+    }
+}
+
+function initHomeTiltCards() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const tiltTargets = document.querySelectorAll(
+        ".service-card--featured, .testimonial-card, .info-card, .step-card"
+    );
+
+    tiltTargets.forEach((card) => {
+        let frameId = null;
+
+        function resetCard() {
+            card.style.transform = "";
+            card.style.setProperty("--pointer-x", "50%");
+            card.style.setProperty("--pointer-y", "50%");
+        }
+
+        function onMove(event) {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - 0.5) * 8;
+            const rotateX = ((y / rect.height) - 0.5) * -8;
+
+            const pointerX = `${(x / rect.width) * 100}%`;
+            const pointerY = `${(y / rect.height) * 100}%`;
+
+            if (frameId) cancelAnimationFrame(frameId);
+
+            frameId = requestAnimationFrame(() => {
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                card.style.setProperty("--pointer-x", pointerX);
+                card.style.setProperty("--pointer-y", pointerY);
+            });
+        }
+
+        function onLeave() {
+            if (frameId) cancelAnimationFrame(frameId);
+            resetCard();
+        }
+
+        card.addEventListener("mousemove", onMove);
+        card.addEventListener("mouseleave", onLeave);
+    });
+}
+
+function initHomeGlowTracking() {
+    const glowTargets = document.querySelectorAll(
+        ".service-card--featured, .rail-card, .coverage-side-card, .testimonial-card"
+    );
+
+    glowTargets.forEach((card) => {
+        card.addEventListener("mousemove", (event) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+            card.style.setProperty("--pointer-x", `${x}%`);
+            card.style.setProperty("--pointer-y", `${y}%`);
+        });
+    });
+}
+
+function initHomeSectionAnimations() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const servicesCards = document.querySelectorAll(".services-preview__grid .service-card--featured");
+    const processCards = document.querySelectorAll(".process-grid .step-card");
+    const testimonialCards = document.querySelectorAll(".testimonials-grid .testimonial-card");
+    const benefitsCards = document.querySelectorAll(".benefits-grid .info-card");
+    const coverageSideCard = document.querySelector(".coverage-side-card");
+    const ctaPanel = document.querySelector(".cta-panel");
+
+    createStaggerReveal(gsap, benefitsCards, {
+        y: 24,
+        duration: 0.72,
+        stagger: 0.1,
+        start: "top 85%",
+    });
+
+    createStaggerReveal(gsap, servicesCards, {
+        y: 28,
+        duration: 0.82,
+        stagger: 0.12,
+        start: "top 84%",
+    });
+
+    createStaggerReveal(gsap, processCards, {
+        y: 22,
+        duration: 0.68,
+        stagger: 0.1,
+        start: "top 86%",
+    });
+
+    createStaggerReveal(gsap, testimonialCards, {
+        y: 22,
+        duration: 0.68,
+        stagger: 0.1,
+        start: "top 86%",
+    });
+
+    if (coverageSideCard) {
+        gsap.fromTo(
+            coverageSideCard,
+            {
+                x: 28,
                 opacity: 0,
             },
             {
                 x: 0,
                 opacity: 1,
-                duration: 0.9,
-            },
-            "-=0.55"
+                duration: 0.78,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: coverageSideCard,
+                    start: "top 87%",
+                    once: true,
+                },
+            }
         );
     }
 
-    if (heroPanel) {
-        heroTimeline.fromTo(
-            heroPanel,
+    if (ctaPanel) {
+        gsap.fromTo(
+            ctaPanel,
             {
-                scale: 0.97,
+                y: 24,
                 opacity: 0,
+                scale: 0.99,
             },
             {
+                y: 0,
+                opacity: 1,
                 scale: 1,
-                opacity: 1,
-                duration: 1,
-            },
-            "-=0.65"
+                duration: 0.85,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ctaPanel,
+                    start: "top 88%",
+                    once: true,
+                },
+            }
         );
     }
-
-    if (heroImage) {
-        heroTimeline.fromTo(
-            heroImage,
-            {
-                scale: 1.08,
-            },
-            {
-                scale: 1.02,
-                duration: 1.4,
-                ease: "power2.out",
-            },
-            "-=1.1"
-        );
-    }
-
-    if (heroFloatingCards.length) {
-        heroTimeline.fromTo(
-            heroFloatingCards,
-            {
-                y: 18,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.7,
-                stagger: 0.16,
-            },
-            "-=0.85"
-        );
-    }
-
-    if (highlightItems.length) {
-        heroTimeline.fromTo(
-            highlightItems,
-            {
-                y: 10,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.55,
-                stagger: 0.08,
-            },
-            "-=0.6"
-        );
-    }
-}
-
-function initSectionStaggers(
-    gsap,
-    benefitsCards,
-    serviceCards,
-    processCards,
-    reassuranceCards,
-    faqItems
-) {
-    createStaggerReveal(gsap, benefitsCards, {
-        y: 22,
-        duration: 0.7,
-        stagger: 0.12,
-        start: "top 82%",
-    });
-
-    createStaggerReveal(gsap, serviceCards, {
-        y: 24,
-        duration: 0.72,
-        stagger: 0.1,
-        start: "top 82%",
-    });
-
-    createStaggerReveal(gsap, processCards, {
-        y: 24,
-        duration: 0.72,
-        stagger: 0.12,
-        start: "top 84%",
-    });
-
-    createStaggerReveal(gsap, reassuranceCards, {
-        x: 18,
-        duration: 0.75,
-        stagger: 0.14,
-        start: "top 84%",
-    });
-
-    createStaggerReveal(gsap, faqItems, {
-        y: 18,
-        duration: 0.55,
-        stagger: 0.08,
-        start: "top 88%",
-    });
 }
 
 function createStaggerReveal(gsap, elements, options = {}) {
@@ -240,213 +312,14 @@ function createStaggerReveal(gsap, elements, options = {}) {
     );
 }
 
-function initCtaAnimation(gsap, ctaPanel) {
-    if (!ctaPanel || !window.ScrollTrigger) return;
-
-    gsap.fromTo(
-        ctaPanel,
-        {
-            y: 26,
-            opacity: 0,
-            scale: 0.985,
-        },
-        {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ctaPanel,
-                start: "top 88%",
-                once: true,
-            },
-        }
-    );
-}
-
-function initCoverageAnimation(gsap, coverageMapCard, coverageSideCard) {
-    if (!window.ScrollTrigger) return;
-
-    if (coverageMapCard) {
-        gsap.fromTo(
-            coverageMapCard,
-            {
-                y: 28,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.9,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: coverageMapCard,
-                    start: "top 84%",
-                    once: true,
-                },
-            }
-        );
-    }
-
-    if (coverageSideCard) {
-        gsap.fromTo(
-            coverageSideCard,
-            {
-                x: 24,
-                opacity: 0,
-            },
-            {
-                x: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: coverageSideCard,
-                    start: "top 88%",
-                    once: true,
-                },
-            }
-        );
-    }
-}
-
-function initParallaxDetails(gsap, heroImage, heroFloatingCards, coverageMapCard) {
-    if (!window.ScrollTrigger) return;
-
-    if (heroImage) {
-        gsap.to(heroImage, {
-            yPercent: 6,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".hero-section",
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.8,
-            },
-        });
-    }
-
-    if (heroFloatingCards.length) {
-        heroFloatingCards.forEach((card, index) => {
-            gsap.to(card, {
-                y: index % 2 === 0 ? -14 : 14,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".hero-section",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1.1,
-                },
-            });
-        });
-    }
-
-    if (coverageMapCard) {
-        const overlay = coverageMapCard.querySelector(".coverage-map-card__overlay");
-
-        if (overlay) {
-            gsap.to(overlay, {
-                y: -10,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: coverageMapCard,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1,
-                },
-            });
-        }
-    }
-}
-
-function initHomeHoverEffects(gsap) {
-    const hoverCards = document.querySelectorAll(
-        ".info-card, .service-card, .step-card, .stat-card, .coverage-side-card"
-    );
-
-    hoverCards.forEach((card) => {
-        const icon = card.querySelector(
-            ".info-card__icon, .service-card__icon, .coverage-side-card__icon"
-        );
-
-        card.addEventListener("mouseenter", () => {
-            gsap.to(card, {
-                y: -4,
-                duration: 0.28,
-                ease: "power2.out",
-            });
-
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1.05,
-                    rotate: 2,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
-            }
-        });
-
-        card.addEventListener("mouseleave", () => {
-            gsap.to(card, {
-                y: 0,
-                duration: 0.28,
-                ease: "power2.out",
-            });
-
-            if (icon) {
-                gsap.to(icon, {
-                    scale: 1,
-                    rotate: 0,
-                    duration: 0.28,
-                    ease: "power2.out",
-                });
-            }
-        });
-    });
-
-    const ctaButtons = document.querySelectorAll(".hero-section .button, .cta-panel .button");
-
-    ctaButtons.forEach((button) => {
-        button.addEventListener("mouseenter", () => {
-            gsap.to(button, {
-                y: -2,
-                duration: 0.22,
-                ease: "power2.out",
-            });
-        });
-
-        button.addEventListener("mouseleave", () => {
-            gsap.to(button, {
-                y: 0,
-                duration: 0.22,
-                ease: "power2.out",
-            });
-        });
-    });
-}
-
-function initHomeHoverFallbacks() {
-    const heroVisual = document.querySelector(".hero-section__visual");
-    const coverageMapCard = document.querySelector(".coverage-map-card");
-
-    if (heroVisual) {
-        heroVisual.classList.add("is-enhanced");
-    }
-
-    if (coverageMapCard) {
-        coverageMapCard.classList.add("is-enhanced");
-    }
-}
-
 window.addEventListener("page:ready", (event) => {
     if (event.detail?.page === "home") {
-        initHomeAnimations();
+        initHomePage();
     }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (pageName === "home") {
-        initHomeAnimations();
+    if (homePageName === "home") {
+        initHomePage();
     }
 });

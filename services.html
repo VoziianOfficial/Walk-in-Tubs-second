@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Walk-in Tub Services | Compare Walk-in Tub Provider Categories</title>
     <meta name="description"
-        content="Explore walk-in tub service categories, compare local provider options, and review quote paths for installation, replacement, repair, maintenance, and accessibility-focused updates." />
-    <meta name="theme-color" content="#f7f3ee" />
+        content="Explore walk-in tub service categories, compare local provider options, and review quote paths for installation, replacement, repair, accessibility-focused updates, maintenance, and consultation." />
+    <meta name="theme-color" content="#111214" />
     <link rel="canonical" href="https://www.example.com/services.html" />
 
     <link rel="icon" type="image/svg+xml" href="assets/images/global/favicon.svg" />
@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8R2RkF1D3yQ8K/ux1DPZWS9A2b1zY7Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/services.css" />
@@ -42,7 +44,7 @@
                         </span>
                         <span class="site-logo__text">
                             <span class="site-logo__title">Walk-in Tub Compare</span>
-                            <span class="site-logo__subtitle">USA Provider Matching Platform</span>
+                            <span class="site-logo__subtitle">Independent USA Matching Platform</span>
                         </span>
                     </a>
 
@@ -56,6 +58,14 @@
                     </nav>
 
                     <div class="site-header__actions">
+                        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme"
+                            title="Switch theme">
+                            <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"
+                                aria-hidden="true"></i>
+                            <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"
+                                aria-hidden="true"></i>
+                        </button>
+
                         <a class="header-phone header-phone--mobile" href="tel:+18005550199" aria-label="Call now">
                             <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                         </a>
@@ -87,7 +97,7 @@
                         </span>
                         <span class="site-logo__text">
                             <span class="site-logo__title">Walk-in Tub Compare</span>
-                            <span class="site-logo__subtitle">USA Provider Matching Platform</span>
+                            <span class="site-logo__subtitle">Independent USA Matching Platform</span>
                         </span>
                     </a>
 
@@ -99,10 +109,13 @@
                 <div class="mobile-menu__body">
                     <nav class="mobile-menu__nav" aria-label="Mobile primary navigation">
                         <ul class="mobile-menu__list">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="services.html" aria-current="page">Services</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                            <li><a href="services.html" aria-current="page"><i
+                                        class="fa-solid fa-grid-2"></i><span>Services</span></a></li>
+                            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i><span>About Us</span></a>
+                            </li>
+                            <li><a href="contact.html"><i
+                                        class="fa-solid fa-envelope-open-text"></i><span>Contact</span></a></li>
                         </ul>
                     </nav>
 
@@ -127,15 +140,31 @@
                                 <li><a href="cookie-policy.html">Cookie Policy</a></li>
                             </ul>
                         </div>
+
+                        <div class="mobile-menu__card">
+                            <span class="mobile-menu__eyebrow">Contact</span>
+                            <ul class="mobile-menu__links">
+                                <li><a href="tel:+18005550199">(800) 555-0199</a></li>
+                                <li><a href="mailto:hello@walkintubcompare.com">hello@walkintubcompare.com</a></li>
+                                <li><a href="contact.html">Request Quotes</a></li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="mobile-menu__actions">
+                        <button class="button button--secondary button--block" type="button" data-theme-toggle
+                            aria-label="Switch theme">
+                            <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+                            <span>Switch Theme</span>
+                        </button>
+
                         <a class="button button--primary button--block" href="tel:+18005550199">
                             <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                             <span>Call Now</span>
                         </a>
-                        <a class="button button--secondary button--block" href="contact.html">
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+
+                        <a class="button button--ghost-dark button--block" href="contact.html">
+                            <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
                             <span>Request Quotes</span>
                         </a>
                     </div>
@@ -144,18 +173,31 @@
         </aside>
 
         <main id="main-content">
-            <!-- Hero -->
+            <!-- HERO -->
             <section class="services-hero section">
-                <div class="container">
+                <div class="container-wide">
                     <div class="services-hero__layout">
-                        <div class="services-hero__content" data-reveal="fade-up">
-                            <span class="section-kicker">Walk-in Tub Service Categories</span>
-                            <h1>Explore the main walk-in tub service paths homeowners usually compare.</h1>
+                        <div class="services-hero__visual" data-reveal="fade-right">
+                            <div class="services-hero__media">
+                                <img src="assets/images/services/services-hero-main.jpg"
+                                    alt="Premium accessible bathroom with luxury walk-in tub styling" />
+                            </div>
+
+                            <div class="services-hero__badge services-hero__badge--top">
+                                <span>Service map</span>
+                                <strong>Installation, replacement, repair, upgrades, maintenance, and
+                                    consultation.</strong>
+                            </div>
+                        </div>
+
+                        <div class="services-hero__content" data-reveal="fade-left">
+                            <span class="section-kicker">Service Categories</span>
+                            <h1>Choose the path that best fits the homeowner’s next decision.</h1>
                             <p class="services-hero__lead">
-                                This page is designed to help homeowners review common walk-in tub categories, compare
-                                provider fit,
-                                and move toward a clearer quote request process based on accessibility goals, bathroom
-                                layout, and project scope.
+                                This page organizes the main walk-in tub comparison categories into a more premium
+                                browsing flow.
+                                Instead of treating every project the same, it helps users move through service type,
+                                fit, comfort, and quote direction more clearly.
                             </p>
 
                             <div class="services-hero__actions">
@@ -163,297 +205,294 @@
                                     <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
                                     <span>Request Quotes</span>
                                 </a>
-                                <a class="button button--ghost" href="tel:+18005550199">
-                                    <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
-                                    <span>Call Now</span>
+                                <a class="button button--ghost" href="#services-catalog">
+                                    <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                                    <span>Browse Categories</span>
                                 </a>
                             </div>
 
-                            <ul class="services-hero__chips" aria-label="Category filters">
-                                <li>Installation</li>
-                                <li>Replacement</li>
-                                <li>Repair</li>
-                                <li>Accessibility</li>
-                                <li>Maintenance</li>
-                                <li>Consultation</li>
-                            </ul>
-                        </div>
-
-                        <div class="services-hero__visual" data-reveal="fade-left">
-                            <div class="services-hero__panel">
-                                <img src="assets/images/services/services-hero.jpg"
-                                    alt="Premium accessible bathroom with walk-in tub styling" />
-                            </div>
-
-                            <div class="services-hero__badge services-hero__badge--top">
-                                <span>Common decision factors</span>
-                                <strong>Layout fit, safety features, quote clarity, and provider response
-                                    timing</strong>
-                            </div>
-
-                            <div class="services-hero__badge services-hero__badge--bottom">
-                                <span>Typical project paths</span>
-                                <strong>New installation, replacement, repair, upgrades, and consultations</strong>
+                            <div class="services-hero__stats">
+                                <article class="services-hero__stat">
+                                    <strong>6</strong>
+                                    <span>Main comparison categories</span>
+                                </article>
+                                <article class="services-hero__stat">
+                                    <strong>USA</strong>
+                                    <span>Service-area context</span>
+                                </article>
+                                <article class="services-hero__stat">
+                                    <strong>1 flow</strong>
+                                    <span>Cleaner quote pathway</span>
+                                </article>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Services Grid -->
-            <section class="services-categories section">
-                <div class="container">
+            <!-- CATALOG -->
+            <section class="services-catalog section" id="services-catalog">
+                <div class="container-wide">
                     <div class="section-heading" data-reveal="fade-up">
-                        <span class="section-kicker">All Categories</span>
-                        <h2>Review each walk-in tub category with a clearer comparison path.</h2>
+                        <span class="section-kicker">Browse all categories</span>
+                        <h2>Every category is designed to be explored on its own page.</h2>
                         <p>
-                            Different projects call for different provider types, feature priorities, and installation
-                            considerations.
-                            These category pages help organize that process before homeowners request quotes.
+                            Each card leads into a dedicated service page with a more focused content path, clearer
+                            decision framing,
+                            and stronger quote-request context.
                         </p>
                     </div>
 
-                    <div class="services-categories__grid">
-                        <article class="services-category-card" data-reveal="fade-up">
-                            <div class="services-category-card__top">
-                                <div class="services-category-card__icon">
-                                    <i class="fa-solid fa-bath" aria-hidden="true"></i>
-                                </div>
-                                <span class="services-category-card__tag">Popular category</span>
+                    <div class="services-catalog__grid">
+                        <a class="services-showcase-card" href="walk-in-tub-installation.html" data-reveal="fade-up">
+                            <img src="assets/images/services/install-card.jpg"
+                                alt="Walk-in tub installation service card" />
+                            <div class="services-showcase-card__content">
+                                <span class="services-showcase-card__eyebrow">Installation</span>
+                                <h3>Walk-in Tub Installation</h3>
+                                <p>For new setup comparisons shaped by bathroom fit, feature planning, and accessibility
+                                    goals.</p>
                             </div>
-                            <h3>Walk-in Tub Installation</h3>
-                            <p>
-                                Compare providers for new walk-in tub installation paths, bathroom-fit evaluation, and
-                                feature-based quote requests.
-                            </p>
-                            <ul class="services-category-card__points">
-                                <li>New project setup</li>
-                                <li>Bathroom layout fit</li>
-                                <li>Entry and safety feature planning</li>
-                            </ul>
-                            <a href="walk-in-tub-installation.html" class="text-link">
-                                Explore installation
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                            </a>
-                        </article>
+                        </a>
 
-                        <article class="services-category-card" data-reveal="fade-up" data-delay="70">
-                            <div class="services-category-card__top">
-                                <div class="services-category-card__icon">
-                                    <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
-                                </div>
-                                <span class="services-category-card__tag">Update path</span>
+                        <a class="services-showcase-card services-showcase-card--tall"
+                            href="walk-in-tub-replacement.html" data-reveal="fade-up" data-delay="70">
+                            <img src="assets/images/services/replacement-card.jpg"
+                                alt="Walk-in tub replacement service card" />
+                            <div class="services-showcase-card__content">
+                                <span class="services-showcase-card__eyebrow">Replacement</span>
+                                <h3>Walk-in Tub Replacement</h3>
+                                <p>For older units, comfort changes, updated mobility priorities, and a better-fit
+                                    replacement path.</p>
                             </div>
-                            <h3>Walk-in Tub Replacement</h3>
-                            <p>
-                                Review provider options for replacing older tubs, upgrading accessibility features, or
-                                changing bath configuration goals.
-                            </p>
-                            <ul class="services-category-card__points">
-                                <li>Older tub replacement</li>
-                                <li>Comfort and feature updates</li>
-                                <li>Scope and fit comparison</li>
-                            </ul>
-                            <a href="walk-in-tub-replacement.html" class="text-link">
-                                Explore replacement
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                            </a>
-                        </article>
+                        </a>
 
-                        <article class="services-category-card" data-reveal="fade-up" data-delay="140">
-                            <div class="services-category-card__top">
-                                <div class="services-category-card__icon">
-                                    <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
-                                </div>
-                                <span class="services-category-card__tag">Issue-based</span>
+                        <a class="services-showcase-card" href="walk-in-tub-repair.html" data-reveal="fade-up"
+                            data-delay="140">
+                            <img src="assets/images/services/repair-card.jpg" alt="Walk-in tub repair service card" />
+                            <div class="services-showcase-card__content">
+                                <span class="services-showcase-card__eyebrow">Repair</span>
+                                <h3>Walk-in Tub Repair</h3>
+                                <p>For door issues, drainage concerns, controls, feature systems, and issue-based
+                                    comparison paths.</p>
                             </div>
-                            <h3>Walk-in Tub Repair</h3>
-                            <p>
-                                Explore providers that may address common repair scenarios such as drainage issues, door
-                                function, controls, or fixtures.
-                            </p>
-                            <ul class="services-category-card__points">
-                                <li>Door and seal concerns</li>
-                                <li>Drain or fixture issues</li>
-                                <li>System function review</li>
-                            </ul>
-                            <a href="walk-in-tub-repair.html" class="text-link">
-                                Explore repair
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                            </a>
-                        </article>
+                        </a>
 
-                        <article class="services-category-card" data-reveal="fade-up" data-delay="210">
-                            <div class="services-category-card__top">
-                                <div class="services-category-card__icon">
-                                    <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
-                                </div>
-                                <span class="services-category-card__tag">Accessibility-focused</span>
+                        <a class="services-showcase-card" href="walk-in-tub-accessibility-upgrades.html"
+                            data-reveal="fade-up" data-delay="40">
+                            <img src="assets/images/services/upgrades-card.jpg"
+                                alt="Accessibility upgrades service card" />
+                            <div class="services-showcase-card__content">
+                                <span class="services-showcase-card__eyebrow">Accessibility</span>
+                                <h3>Accessibility Upgrades</h3>
+                                <p>For safer entry, support features, and more confidence-focused comfort decisions.</p>
                             </div>
-                            <h3>Accessibility Upgrades</h3>
-                            <p>
-                                Compare providers offering updates that may improve entry, comfort, stability, and
-                                overall bathing accessibility.
-                            </p>
-                            <ul class="services-category-card__points">
-                                <li>Grab bars and support features</li>
-                                <li>Entry and seating improvements</li>
-                                <li>Safety-first comparison points</li>
-                            </ul>
-                            <a href="walk-in-tub-accessibility-upgrades.html" class="text-link">
-                                Explore upgrades
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                            </a>
-                        </article>
+                        </a>
 
-                        <article class="services-category-card" data-reveal="fade-up" data-delay="280">
-                            <div class="services-category-card__top">
-                                <div class="services-category-card__icon">
-                                    <i class="fa-solid fa-droplet" aria-hidden="true"></i>
-                                </div>
-                                <span class="services-category-card__tag">Long-term care</span>
+                        <a class="services-showcase-card" href="walk-in-tub-maintenance.html" data-reveal="fade-up"
+                            data-delay="110">
+                            <img src="assets/images/services/maintenance-card.jpg"
+                                alt="Walk-in tub maintenance service card" />
+                            <div class="services-showcase-card__content">
+                                <span class="services-showcase-card__eyebrow">Maintenance</span>
+                                <h3>Walk-in Tub Maintenance</h3>
+                                <p>For long-term condition review, feature upkeep, and a more structured maintenance
+                                    context.</p>
                             </div>
-                            <h3>Walk-in Tub Maintenance</h3>
-                            <p>
-                                Review categories tied to long-term upkeep, inspection needs, cleaning considerations,
-                                and feature longevity.
-                            </p>
-                            <ul class="services-category-card__points">
-                                <li>Routine upkeep context</li>
-                                <li>Performance checks</li>
-                                <li>Longer-term ownership planning</li>
-                            </ul>
-                            <a href="walk-in-tub-maintenance.html" class="text-link">
-                                Explore maintenance
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                            </a>
-                        </article>
+                        </a>
 
-                        <article class="services-category-card" data-reveal="fade-up" data-delay="350">
-                            <div class="services-category-card__top">
-                                <div class="services-category-card__icon">
-                                    <i class="fa-solid fa-comments" aria-hidden="true"></i>
-                                </div>
-                                <span class="services-category-card__tag">Starting point</span>
+                        <a class="services-showcase-card services-showcase-card--wide"
+                            href="walk-in-tub-consultation.html" data-reveal="fade-up" data-delay="180">
+                            <img src="assets/images/services/consultation-card.jpg"
+                                alt="Walk-in tub consultation service card" />
+                            <div class="services-showcase-card__content">
+                                <span class="services-showcase-card__eyebrow">Consultation</span>
+                                <h3>Walk-in Tub Consultation</h3>
+                                <p>For homeowners who want a more organized first step before installation, replacement,
+                                    repair, or upgrade quotes.</p>
                             </div>
-                            <h3>Walk-in Tub Consultation</h3>
-                            <p>
-                                Compare providers that offer initial quote discussions, project review, feature
-                                planning, and service-area confirmation.
-                            </p>
-                            <ul class="services-category-card__points">
-                                <li>Feature planning</li>
-                                <li>Quote request readiness</li>
-                                <li>Provider fit evaluation</li>
-                            </ul>
-                            <a href="walk-in-tub-consultation.html" class="text-link">
-                                Explore consultation
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                            </a>
-                        </article>
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <!-- Comparison Logic -->
-            <section class="comparison-section section">
+            <!-- SWIPER -->
+            <section class="services-rail section">
+                <div class="container-wide">
+                    <div class="section-heading section-heading--split" data-reveal="fade-up">
+                        <div>
+                            <span class="section-kicker">Swipe through decision themes</span>
+                            <h2>A more visual way to understand how categories differ.</h2>
+                        </div>
+                        <div class="services-rail__nav" aria-label="Category theme slider controls">
+                            <button class="services-rail__button services-rail__button--prev" type="button"
+                                aria-label="Previous slide">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </button>
+                            <button class="services-rail__button services-rail__button--next" type="button"
+                                aria-label="Next slide">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="swiper services-rail-swiper" data-reveal="fade-up">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <article class="services-rail-card">
+                                    <img src="assets/images/services/rail-layout.jpg"
+                                        alt="Bathroom fit and layout card" />
+                                    <div class="services-rail-card__content">
+                                        <span>Bathroom Fit</span>
+                                        <h3>Some categories begin with dimensions and movement through the room.</h3>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <article class="services-rail-card">
+                                    <img src="assets/images/services/rail-support.jpg"
+                                        alt="Support and accessibility card" />
+                                    <div class="services-rail-card__content">
+                                        <span>Support Needs</span>
+                                        <h3>Accessibility priorities can completely change which path feels most
+                                            relevant.</h3>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <article class="services-rail-card">
+                                    <img src="assets/images/services/rail-upkeep.jpg"
+                                        alt="Maintenance and long term condition card" />
+                                    <div class="services-rail-card__content">
+                                        <span>Long-Term Care</span>
+                                        <h3>Maintenance, condition review, and feature longevity matter more over time.
+                                        </h3>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <article class="services-rail-card">
+                                    <img src="assets/images/services/rail-planning.jpg"
+                                        alt="Consultation and planning card" />
+                                    <div class="services-rail-card__content">
+                                        <span>Planning First</span>
+                                        <h3>Consultation can be the smartest entry point when priorities are still
+                                            unclear.</h3>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDITORIAL SPLIT -->
+            <section class="services-editorial section">
                 <div class="container">
-                    <div class="comparison-layout">
-                        <div class="comparison-content" data-reveal="fade-right">
-                            <span class="section-kicker">How to compare</span>
-                            <h2>Homeowners usually compare more than just the tub itself.</h2>
+                    <div class="services-editorial__layout">
+                        <div class="services-editorial__content" data-reveal="fade-right">
+                            <span class="section-kicker">How homeowners often choose</span>
+                            <h2>The strongest category is usually the one that reflects the real constraint first.</h2>
                             <p>
-                                Provider selection often includes product options, accessibility fit, installation
-                                scope, response clarity,
-                                service-area relevance, and how the quote process is explained.
+                                Some homeowners start with installation because the project is new. Others begin with
+                                replacement because the current unit no longer feels ideal.
+                                In many cases, the most useful difference is whether the real need is repair,
+                                accessibility support, or just a clearer planning conversation.
                             </p>
-
-                            <ul class="comparison-list">
-                                <li>
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                    <span>Bathroom layout and size compatibility</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                    <span>Low-entry thresholds, door style, and seating comfort</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                    <span>Hydrotherapy features and optional upgrades</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                    <span>Installation complexity and timeline expectations</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                    <span>Quote transparency, warranty details, and provider responsiveness</span>
-                                </li>
-                            </ul>
+                            <p>
+                                That is why this page is structured around category-first browsing rather than a
+                                one-size-fits-all service claim.
+                            </p>
                         </div>
 
-                        <div class="comparison-cards" data-reveal="fade-left">
-                            <article class="comparison-mini-card">
-                                <span class="comparison-mini-card__label">Best for</span>
-                                <strong>Organizing provider options before outreach</strong>
+                        <div class="services-editorial__stack" data-reveal="fade-left">
+                            <article class="editorial-note-card">
+                                <span class="editorial-note-card__label">Most useful when</span>
+                                <strong>The homeowner wants clarity before comparing actual quotes.</strong>
                             </article>
-                            <article class="comparison-mini-card">
-                                <span class="comparison-mini-card__label">Helpful when</span>
-                                <strong>Accessibility needs and bathroom constraints both matter</strong>
-                            </article>
-                            <article class="comparison-mini-card">
-                                <span class="comparison-mini-card__label">Why it matters</span>
-                                <strong>A structured comparison path can make quote decisions clearer</strong>
+
+                            <article class="editorial-note-card">
+                                <span class="editorial-note-card__label">What this improves</span>
+                                <strong>Feature planning, category confidence, and provider-fit comparison
+                                    quality.</strong>
                             </article>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Selection Factors -->
-            <section class="selection-section section">
+            <!-- TESTIMONIALS -->
+            <section class="services-testimonials section">
                 <div class="container">
                     <div class="section-heading" data-reveal="fade-up">
-                        <span class="section-kicker">Selection Factors</span>
-                        <h2>What often influences provider choice in this category.</h2>
+                        <span class="section-kicker">User impressions</span>
+                        <h2>A category page should feel visual, guided, and easy to compare.</h2>
                     </div>
 
-                    <div class="selection-grid">
-                        <article class="selection-card" data-reveal="fade-up">
-                            <div class="selection-card__icon">
-                                <i class="fa-solid fa-ruler-combined" aria-hidden="true"></i>
+                    <div class="services-testimonials__grid">
+                        <article class="services-testimonial-card" data-reveal="fade-up">
+                            <div class="services-testimonial-card__icon">
+                                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
                             </div>
-                            <h3>Bathroom layout fit</h3>
-                            <p>Homeowners often start with dimensions, entry space, wall placement, and overall fit for
-                                the room.</p>
+                            <p>
+                                “I liked that every category felt separate. It made the site feel more premium and much
+                                less generic.”
+                            </p>
+                            <strong>Visitor impression</strong>
                         </article>
 
-                        <article class="selection-card" data-reveal="fade-up" data-delay="70">
-                            <div class="selection-card__icon">
-                                <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+                        <article class="services-testimonial-card" data-reveal="fade-up" data-delay="90">
+                            <div class="services-testimonial-card__icon">
+                                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
                             </div>
-                            <h3>Safety priorities</h3>
-                            <p>Grab bars, seat height, threshold design, and easier entry can be central to
-                                accessibility-focused decisions.</p>
+                            <p>
+                                “The visual cards made it much easier to decide whether I should look at upgrades or
+                                replacement first.”
+                            </p>
+                            <strong>Homeowner feedback</strong>
                         </article>
 
-                        <article class="selection-card" data-reveal="fade-up" data-delay="140">
-                            <div class="selection-card__icon">
-                                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                        <article class="services-testimonial-card" data-reveal="fade-up" data-delay="180">
+                            <div class="services-testimonial-card__icon">
+                                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
                             </div>
-                            <h3>Feature preferences</h3>
-                            <p>Hydrotherapy systems, fast-drain options, controls, and comfort upgrades may change
-                                provider fit and price.</p>
+                            <p>
+                                “This page feels more like a high-end selection experience than a normal service
+                                directory.”
+                            </p>
+                            <strong>UI/UX response</strong>
                         </article>
+                    </div>
+                </div>
+            </section>
 
-                        <article class="selection-card" data-reveal="fade-up" data-delay="210">
-                            <div class="selection-card__icon">
-                                <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
-                            </div>
-                            <h3>Quote clarity</h3>
-                            <p>Many homeowners compare how clearly companies explain scope, expected timing, and
-                                included options.</p>
-                        </article>
+            <!-- COMPARISON PANEL -->
+            <section class="services-comparison section">
+                <div class="container">
+                    <div class="services-comparison__panel" data-reveal="fade-up">
+                        <div class="services-comparison__content">
+                            <span class="section-kicker">Comparison themes</span>
+                            <h2>What often changes from one category to another.</h2>
+                            <ul class="services-comparison__list">
+                                <li><i class="fa-solid fa-check"></i><span>Project direction: new, existing,
+                                        issue-based, or planning-first</span></li>
+                                <li><i class="fa-solid fa-check"></i><span>Bathroom layout and fit constraints</span>
+                                </li>
+                                <li><i class="fa-solid fa-check"></i><span>Comfort, support, and accessibility
+                                        priorities</span></li>
+                                <li><i class="fa-solid fa-check"></i><span>How clearly the quote process matches the
+                                        category need</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="services-comparison__aside">
+                            <div class="services-comparison__pill">Category-first</div>
+                            <div class="services-comparison__pill">Luxury UX</div>
+                            <div class="services-comparison__pill">Quote clarity</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -463,11 +502,11 @@
                 <div class="container">
                     <div class="services-cta__panel" data-reveal="fade-up">
                         <div class="services-cta__content">
-                            <span class="section-kicker">Ready to compare?</span>
-                            <h2>Request quotes based on the category that best fits your project.</h2>
+                            <span class="section-kicker">Ready to move forward?</span>
+                            <h2>Request quotes after choosing the category that feels most accurate.</h2>
                             <p>
-                                Start with the service type that matches your goals, then move toward a more focused
-                                quote request path.
+                                Use the category pages to narrow the project first, then move into a more focused
+                                provider-comparison path.
                             </p>
                         </div>
 
@@ -616,6 +655,8 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
         integrity="sha512-7eHR+K6m8Aq7F3Y5QWck/dwZ0pniS3pSkeCZMt2rt7NmBGG99nmCaTKty+O+kO5OVwOB1p5MNDoAuCEr0aKBdQ=="
