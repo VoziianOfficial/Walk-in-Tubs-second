@@ -88,54 +88,42 @@
     position: relative;
     min-height: 680px;
     display: grid;
-    align-items: center;
-}
-
-.hero-panel--main {
-    position: relative;
-    min-height: 680px;
-    height: 100%;
+    align-content: start;
+    justify-items: start;
+    gap: 0.8rem;
+    padding: 1rem;
     border-radius: 36px;
-    overflow: hidden;
-    isolation: isolate;
-    box-shadow: var(--shadow-lg);
-}
-
-.hero-panel--main::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-lg), var(--shadow-inset);
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.12) 26%, rgba(0, 0, 0, 0.48) 100%);
-    z-index: 1;
-    pointer-events: none;
+        radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.26), transparent 24%),
+        radial-gradient(circle at 80% 18%, rgba(164, 214, 243, 0.2), transparent 30%),
+        linear-gradient(135deg, color-mix(in srgb, var(--bg-elevated) 90%, transparent) 0%,
+            color-mix(in srgb, var(--bg-soft) 88%, transparent) 100%);
+    overflow: hidden;
 }
 
-.hero-panel--main::after {
+.hero-section__visual::before {
     content: "";
     position: absolute;
     inset: 1rem;
     border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    z-index: 2;
+    border: 1px dashed color-mix(in srgb, var(--text-muted) 30%, transparent);
     pointer-events: none;
 }
 
-.hero-panel--main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.02);
-    transition: transform 1.2s ease;
-}
-
-.hero-section__visual:hover .hero-panel--main img {
-    transform: scale(1.06);
+.hero-section__visual::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 40%;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.08) 100%);
+    pointer-events: none;
 }
 
 .hero-floating-card {
-    position: absolute;
-    z-index: 3;
+    position: relative;
+    z-index: 2;
     width: min(100%, 270px);
     padding: 1rem 1rem 1.1rem;
     border-radius: 24px;
@@ -146,13 +134,11 @@
 }
 
 .hero-floating-card--top {
-    top: 1.4rem;
-    right: 1rem;
+    margin-top: 0.1rem;
 }
 
 .hero-floating-card--bottom {
-    left: 1rem;
-    bottom: 1.4rem;
+    margin-top: 0.2rem;
 }
 
 .hero-floating-card__label {
@@ -287,11 +273,14 @@
 .service-card__content h3 {
     color: #fff;
     font-size: clamp(1.25rem, 1.1rem + 0.55vw, 1.55rem);
+    line-height: 1.25;
+    text-wrap: balance;
 }
 
 .service-card__content p {
     color: rgba(255, 255, 255, 0.84);
     max-width: 34ch;
+    line-height: 1.5;
 }
 
 /* =========================
@@ -399,6 +388,8 @@
 .rail-card__content h3 {
     color: #fff;
     max-width: 16ch;
+    line-height: 1.35;
+    text-wrap: balance;
 }
 
 /* =========================
@@ -592,17 +583,6 @@
         min-height: 580px;
     }
 
-    .hero-panel--main {
-        min-height: 580px;
-    }
-
-    .hero-floating-card--top {
-        right: 1rem;
-    }
-
-    .hero-floating-card--bottom {
-        left: 1rem;
-    }
 }
 
 @media (max-width: 1024px) {
@@ -662,15 +642,12 @@
     .hero-section__visual {
         min-height: auto;
         gap: 1rem;
-    }
-
-    .hero-panel--main {
-        min-height: 420px;
+        padding: 0.9rem;
     }
 
     .hero-floating-card {
         position: static;
-        width: 100%;
+        width: min(100%, 320px);
     }
 
     .benefits-grid,
@@ -694,7 +671,7 @@
 }
 
 @media (max-width: 560px) {
-    .hero-panel--main {
+    .hero-section__visual {
         min-height: 340px;
         border-radius: 24px;
     }

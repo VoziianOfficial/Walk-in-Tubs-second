@@ -502,6 +502,20 @@ footer,
         border-color var(--transition-base);
 }
 
+.button i {
+    width: 1.05em;
+    height: 1.05em;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.button span {
+    display: block;
+    line-height: 1.12;
+}
+
 .button::before {
     content: "";
     position: absolute;
@@ -559,6 +573,12 @@ footer,
 }
 
 .text-link i {
+    width: 1em;
+    height: 1em;
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    flex-shrink: 0;
     transition: transform var(--transition-base);
 }
 
@@ -615,6 +635,20 @@ footer,
     align-items: center;
     gap: 0.9rem;
     min-width: 0;
+}
+
+.site-logo > i {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: var(--icon-chip-bg);
+    border: 1px solid var(--icon-chip-border);
+    box-shadow: var(--icon-chip-shadow);
+    color: var(--icon-fg);
+    line-height: 1;
+    flex-shrink: 0;
 }
 
 .site-logo__mark {
@@ -674,6 +708,11 @@ footer,
     text-transform: uppercase;
 }
 
+.site-logo__title,
+.site-logo__subtitle {
+    text-wrap: balance;
+}
+
 .logo {
     display: inline-flex;
     align-items: center;
@@ -730,6 +769,12 @@ footer,
         box-shadow var(--transition-base),
         background-color var(--transition-base),
         color var(--transition-base);
+}
+
+.header-phone--mobile i,
+.theme-toggle i,
+.nav-toggle i {
+    line-height: 1;
 }
 
 .header-phone--mobile:hover,
@@ -797,27 +842,21 @@ footer,
 ========================= */
 .nav-toggle {
     display: none;
-    gap: 0.28rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.nav-toggle__line {
-    width: 18px;
-    height: 2px;
-    border-radius: 10px;
-    background: currentColor;
+.nav-toggle i {
+    font-size: 1.05rem;
     transition: transform var(--transition-base), opacity var(--transition-base);
 }
 
-.nav-toggle.is-active .nav-toggle__line:nth-child(1) {
-    transform: translateY(5px) rotate(45deg);
+.nav-toggle:hover i {
+    transform: scale(1.08);
 }
 
-.nav-toggle.is-active .nav-toggle__line:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-toggle.is-active .nav-toggle__line:nth-child(3) {
-    transform: translateY(-5px) rotate(-45deg);
+.nav-toggle.is-active i {
+    transform: rotate(90deg);
 }
 
 /* =========================
@@ -848,8 +887,9 @@ footer,
 
 .mobile-menu__panel {
     position: relative;
-    min-height: 100vh;
-    padding: 1rem;
+    min-height: 100dvh;
+    height: 100dvh;
+    padding: 0.65rem;
     background:
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 20%),
         radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05), transparent 26%),
@@ -873,8 +913,8 @@ footer,
 .mobile-menu__panel::before {
     content: "";
     position: absolute;
-    inset: 1rem;
-    border-radius: 32px;
+    inset: 0.65rem;
+    border-radius: 22px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     pointer-events: none;
 }
@@ -889,8 +929,8 @@ footer,
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding-bottom: 1.1rem;
+    gap: 0.65rem;
+    padding-bottom: 0.55rem;
 }
 
 .mobile-menu .site-logo__title,
@@ -905,8 +945,8 @@ footer,
 }
 
 .mobile-menu__close {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     display: grid;
     place-items: center;
     border-radius: 50%;
@@ -924,27 +964,30 @@ footer,
 
 .mobile-menu__body {
     flex: 1;
-    display: grid;
-    grid-template-rows: auto auto auto;
-    align-content: space-between;
-    gap: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 0.1rem;
 }
 
 .mobile-menu__list {
     display: grid;
-    gap: 0.7rem;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
 }
 
 .mobile-menu__list a {
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 64px;
-    padding: 1rem 1.1rem;
-    border-radius: 22px;
+    min-height: 46px;
+    padding: 0.55rem 0.65rem;
+    border-radius: 14px;
     font-family: var(--font-heading);
-    font-size: clamp(1.1rem, 1rem + 0.9vw, 1.35rem);
-    font-weight: 750;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: #fff;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -956,20 +999,20 @@ footer,
 }
 
 .mobile-menu__list a i {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     display: grid;
     place-items: center;
-    margin-right: 0.7rem;
-    border-radius: 12px;
+    margin-right: 0.45rem;
+    border-radius: 9px;
     background: color-mix(in srgb, var(--icon-chip-bg) 80%, transparent);
     color: #e8f7ff;
     border: 1px solid rgba(168, 216, 244, 0.35);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-menu__list a::after {
-    content: "↗";
+    content: none;
     margin-left: auto;
     font-size: 0.95rem;
     opacity: 0.55;
@@ -985,39 +1028,47 @@ footer,
 
 .mobile-menu__meta {
     display: grid;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
 }
 
 .mobile-menu__card {
-    padding: 1rem;
-    border-radius: 26px;
+    padding: 0.58rem 0.62rem;
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .mobile-menu__eyebrow {
     display: inline-block;
-    margin-bottom: 0.85rem;
-    font-size: 0.76rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.58rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     color: #bfc2c9;
 }
 
 .mobile-menu__links {
     display: grid;
-    gap: 0.55rem;
+    gap: 0.22rem;
 }
 
 .mobile-menu__links a {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.36rem;
+    font-size: 0.72rem;
+    line-height: 1.2;
     color: rgba(255, 255, 255, 0.88);
-    font-weight: 600;
+    font-weight: 560;
     transition: transform var(--transition-base), color var(--transition-base);
+    min-width: 0;
 }
 
 .mobile-menu__links a::before {
@@ -1033,7 +1084,26 @@ footer,
 
 .mobile-menu__actions {
     display: grid;
-    gap: 0.75rem;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+}
+
+.mobile-menu__actions .button {
+    min-height: 40px;
+    padding: 0.5rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
+}
+
+.mobile-menu__actions .button span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mobile-menu__actions .button i {
+    font-size: 0.9rem;
 }
 
 /* =========================
@@ -1263,6 +1333,11 @@ html[data-theme="dark"] .nav-toggle {
 .card i {
     color: var(--icon-fg);
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    line-height: 1;
+    width: 1em;
+    height: 1em;
+    display: grid;
+    place-items: center;
 }
 
 .services-comparison__list i {
@@ -1326,7 +1401,7 @@ select {
 
 textarea {
     min-height: 118px;
-    resize: vertical;
+    resize: none;
 }
 
 input:hover,
@@ -1810,8 +1885,12 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
         display: none;
     }
 
-    .mobile-menu__panel {
-        padding: 0.85rem;
+    .mobile-menu__meta {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-menu__body {
+        gap: 0.45rem;
     }
 
     .cookie-banner {
@@ -1898,9 +1977,30 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
         padding-inline: 1rem;
     }
 
+    .mobile-menu .site-logo__title {
+        font-size: 0.9rem;
+    }
+
     .mobile-menu__list a {
-        min-height: 56px;
-        font-size: 1.04rem;
+        min-height: 44px;
+        font-size: 0.82rem;
+    }
+
+    .mobile-menu__meta {
+        gap: 0.35rem;
+    }
+
+    .mobile-menu__card {
+        padding: 0.5rem;
+    }
+
+    .mobile-menu__links a {
+        font-size: 0.66rem;
+    }
+
+    .mobile-menu__actions .button {
+        min-height: 38px;
+        font-size: 0.72rem;
     }
 
     .section-heading p {
