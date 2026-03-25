@@ -135,12 +135,12 @@
 
 .service-hero__card--top {
     top: 1.4rem;
-    right: -0.35rem;
+    right: 1rem;
 }
 
 .service-hero__card--bottom {
     bottom: 1.4rem;
-    left: -0.35rem;
+    left: 1rem;
 }
 
 .service-hero__card span {

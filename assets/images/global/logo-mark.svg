@@ -1,0 +1,23 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chip" x1="14" y1="10" x2="114" y2="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E9F7FF"/>
+      <stop offset="0.55" stop-color="#9ED8FF"/>
+      <stop offset="1" stop-color="#4E88AE"/>
+    </linearGradient>
+    <linearGradient id="water" x1="28" y1="54" x2="100" y2="94" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DDF5FF"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="#0F1721"/>
+  <rect x="9" y="9" width="110" height="110" rx="26" fill="url(#chip)" fill-opacity="0.2"/>
+  <rect x="20" y="52" width="88" height="44" rx="20" fill="url(#water)"/>
+  <path d="M36 50V42C36 26.536 48.536 14 64 14C79.464 14 92 26.536 92 42V50" stroke="#E8F7FF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M30 73C35.5 67 41 79 46.5 73C52 67 57.5 79 63 73C68.5 67 74 79 79.5 73C85 67 90.5 79 96 73" stroke="#2A6D95" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="35" cy="99" r="5" fill="#DBF4FF"/>
+  <circle cx="52" cy="102" r="4" fill="#DBF4FF" fill-opacity="0.9"/>
+  <circle cx="69" cy="100" r="5" fill="#DBF4FF"/>
+  <circle cx="86" cy="102" r="4" fill="#DBF4FF" fill-opacity="0.9"/>
+</svg>

@@ -15,8 +15,8 @@ function initServicesSwiper() {
     if (!swiperElement || typeof window.Swiper === "undefined") return;
 
     new window.Swiper(swiperElement, {
-        slidesPerView: 1.12,
-        spaceBetween: 18,
+        slidesPerView: 1,
+        spaceBetween: 16,
         speed: 900,
         loop: true,
         grabCursor: true,
@@ -30,16 +30,12 @@ function initServicesSwiper() {
             pauseOnMouseEnter: true,
         },
         breakpoints: {
-            640: {
-                slidesPerView: 1.35,
+            768: {
+                slidesPerView: 2,
                 spaceBetween: 20,
             },
-            900: {
-                slidesPerView: 1.8,
-                spaceBetween: 22,
-            },
             1180: {
-                slidesPerView: 2.2,
+                slidesPerView: 3,
                 spaceBetween: 24,
             },
         },
