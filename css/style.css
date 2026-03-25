@@ -6,11 +6,11 @@
 @import url("./service-page.css");
 
 :root {
-    --bg: #f5f5f6;
-    --bg-elevated: #ffffff;
-    --bg-soft: #ececef;
-    --bg-muted: #e2e2e6;
-    --surface-glass: rgba(255, 255, 255, 0.72);
+    --bg: #eceff3;
+    --bg-elevated: #f4f6f8;
+    --bg-soft: #e4e8ed;
+    --bg-muted: #d8dde4;
+    --surface-glass: rgba(240, 244, 248, 0.76);
 
     --text: #111214;
     --text-soft: #4a4c51;
@@ -28,14 +28,14 @@
 
     --success: #3a7a5a;
     --warning: #8f7753;
-    --icon-fg: #10334a;
-    --icon-chip-bg: linear-gradient(145deg, #f6fdff 0%, #ddf0f8 52%, #f8fcff 100%);
-    --icon-chip-border: rgba(16, 51, 74, 0.2);
-    --icon-chip-shadow: 0 12px 24px rgba(24, 79, 112, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    --icon-fg: #2f414d;
+    --icon-chip-bg: linear-gradient(145deg, #f5f8fb 0%, #e7edf3 52%, #f6f8fb 100%);
+    --icon-chip-border: rgba(47, 65, 77, 0.22);
+    --icon-chip-shadow: 0 12px 24px rgba(28, 37, 46, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82);
 
     --gradient-metal: linear-gradient(135deg, #f9f9fa 0%, #d6d6da 42%, #fbfbfc 100%);
     --gradient-dark: linear-gradient(135deg, #0f1012 0%, #1d1f23 100%);
-    --gradient-panel: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(247, 247, 248, 0.96) 100%);
+    --gradient-panel: linear-gradient(180deg, rgba(246, 248, 251, 0.9) 0%, rgba(234, 238, 243, 0.96) 100%);
     --gradient-line: linear-gradient(90deg, transparent 0%, rgba(17, 18, 20, 0.22) 50%, transparent 100%);
 
     --shadow-xs: 0 8px 20px rgba(11, 12, 14, 0.04);
@@ -109,11 +109,11 @@
 }
 
 html[data-theme="dark"] {
-    --bg: #0e0f11;
-    --bg-elevated: #16181b;
-    --bg-soft: #1d2024;
-    --bg-muted: #26292f;
-    --surface-glass: rgba(20, 22, 25, 0.78);
+    --bg: #0a0b0d;
+    --bg-elevated: #121418;
+    --bg-soft: #181b20;
+    --bg-muted: #22262c;
+    --surface-glass: rgba(16, 18, 21, 0.82);
 
     --text: #f5f5f6;
     --text-soft: #d0d2d6;
@@ -129,9 +129,9 @@ html[data-theme="dark"] {
     --accent-soft: rgba(255, 255, 255, 0.06);
     --accent-platinum: #c5c6cb;
 
-    --gradient-metal: linear-gradient(135deg, #30343a 0%, #9ea2aa 48%, #3a3e45 100%);
-    --gradient-dark: linear-gradient(135deg, #0b0c0e 0%, #15171a 100%);
-    --gradient-panel: linear-gradient(180deg, rgba(23, 25, 28, 0.84) 0%, rgba(18, 19, 22, 0.96) 100%);
+    --gradient-metal: linear-gradient(135deg, #2a2f36 0%, #777f8a 48%, #343943 100%);
+    --gradient-dark: linear-gradient(135deg, #090a0c 0%, #111419 100%);
+    --gradient-panel: linear-gradient(180deg, rgba(20, 23, 28, 0.86) 0%, rgba(14, 16, 20, 0.96) 100%);
     --gradient-line: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.16) 50%, transparent 100%);
 
     --shadow-xs: 0 8px 20px rgba(0, 0, 0, 0.16);
@@ -140,10 +140,10 @@ html[data-theme="dark"] {
     --shadow-lg: 0 32px 88px rgba(0, 0, 0, 0.36);
     --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
-    --icon-fg: #d8effd;
-    --icon-chip-bg: linear-gradient(145deg, #13202c 0%, #1b3447 52%, #162635 100%);
-    --icon-chip-border: rgba(148, 206, 240, 0.36);
-    --icon-chip-shadow: 0 14px 30px rgba(4, 10, 16, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --icon-fg: #d3dbe3;
+    --icon-chip-bg: linear-gradient(145deg, #1a1e25 0%, #20262f 52%, #181c23 100%);
+    --icon-chip-border: rgba(211, 219, 227, 0.3);
+    --icon-chip-shadow: 0 14px 30px rgba(2, 4, 8, 0.56), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
     --menu-text: #f5f5f6;
     --menu-text-soft: rgba(245, 245, 246, 0.9);
@@ -180,7 +180,7 @@ body {
     position: relative;
     overflow-x: clip;
     background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 24%),
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 28%),
         var(--bg);
     color: var(--text);
     font-family: var(--font-body);
@@ -192,6 +192,12 @@ body {
     transition:
         background-color var(--transition-slow),
         color var(--transition-slow);
+}
+
+html[data-theme="dark"] body {
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 30%),
+        var(--bg);
 }
 
 body.menu-open,
@@ -634,7 +640,8 @@ footer,
     box-shadow: 0 16px 38px rgba(10, 11, 13, 0.08);
 }
 
-.site-header__inner {
+.site-header__inner,
+.header-inner {
     min-height: var(--header-height);
     display: flex;
     align-items: center;
@@ -643,7 +650,8 @@ footer,
     transition: min-height var(--transition-base);
 }
 
-.site-header.is-scrolled .site-header__inner {
+.site-header.is-scrolled .site-header__inner,
+.site-header.is-scrolled .header-inner {
     min-height: var(--header-height-scrolled);
 }
 
@@ -690,6 +698,22 @@ footer,
     inset: 1px;
     border-radius: 15px;
     border: 1px solid color-mix(in srgb, var(--icon-fg) 22%, transparent);
+    pointer-events: none;
+}
+
+.site-logo__mark::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: color-mix(in srgb, #ffffff 88%, var(--icon-fg) 12%);
+    box-shadow:
+        -8px 6px 0 0 color-mix(in srgb, #ffffff 78%, var(--icon-fg) 22%),
+        -3px 13px 0 0 color-mix(in srgb, #ffffff 68%, var(--icon-fg) 32%);
+    opacity: 0.92;
     pointer-events: none;
 }
 
@@ -809,6 +833,25 @@ footer,
 ========================= */
 .site-nav {
     margin-left: auto;
+}
+
+/* Centered header nav on key marketing pages */
+@media (min-width: 1025px) {
+    body[data-page="home"] .site-header__inner,
+    body[data-page="services"] .site-header__inner,
+    body[data-page="about"] .site-header__inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    body[data-page="home"] .site-nav,
+    body[data-page="services"] .site-nav,
+    body[data-page="about"] .site-nav {
+        margin-left: 0;
+        justify-self: center;
+    }
 }
 
 .site-nav__list {
@@ -1499,7 +1542,6 @@ footer,
     border-color: var(--line-strong);
 }
 
-.site-logo__mark,
 .info-card__icon,
 .service-card__icon,
 .contact-option-card__icon,
@@ -1515,7 +1557,6 @@ footer,
     color: var(--text) !important;
 }
 
-html[data-theme="dark"] .site-logo__mark,
 html[data-theme="dark"] .info-card__icon,
 html[data-theme="dark"] .service-card__icon,
 html[data-theme="dark"] .contact-option-card__icon,
@@ -2091,7 +2132,8 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
         display: grid;
     }
 
-    .site-header__inner {
+    .site-header__inner,
+    .header-inner {
         min-height: 76px;
     }
 

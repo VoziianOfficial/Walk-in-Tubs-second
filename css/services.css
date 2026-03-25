@@ -113,23 +113,31 @@ html[data-theme="dark"] .services-hero {
 .services-hero__content {
     display: grid;
     gap: 1.25rem;
+    width: 100%;
+    max-width: min(100%, 1120px);
+    margin-inline: auto;
+    justify-items: center;
+    text-align: center;
     align-content: center;
 }
 
 .services-hero__content h1 {
-    max-width: 11.5ch;
+    max-width: min(18ch, 100%);
     text-wrap: balance;
+    margin-inline: auto;
 }
 
 .services-hero__lead {
-    max-width: 60ch;
+    max-width: 78ch;
     font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.12rem);
+    margin-inline: auto;
 }
 
 .services-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
+    justify-content: center;
     padding-top: 0.25rem;
 }
 
@@ -137,6 +145,8 @@ html[data-theme="dark"] .services-hero {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.85rem;
+    width: min(100%, 980px);
+    margin-inline: auto;
     padding-top: 0.5rem;
 }
 
@@ -148,6 +158,7 @@ html[data-theme="dark"] .services-hero {
     box-shadow: var(--shadow-xs), var(--shadow-inset);
     display: grid;
     gap: 0.25rem;
+    text-align: center;
 }
 
 .services-hero__stat strong {

@@ -13,6 +13,9 @@
 
   <rect x="4" y="4" width="120" height="120" rx="30" fill="#0F1721"/>
   <rect x="9" y="9" width="110" height="110" rx="26" fill="url(#chip)" fill-opacity="0.2"/>
+  <circle cx="86" cy="28" r="6" fill="#EAF8FF"/>
+  <circle cx="98" cy="38" r="4" fill="#EAF8FF" fill-opacity="0.95"/>
+  <circle cx="76" cy="40" r="3" fill="#EAF8FF" fill-opacity="0.92"/>
   <rect x="20" y="52" width="88" height="44" rx="20" fill="url(#water)"/>
   <path d="M36 50V42C36 26.536 48.536 14 64 14C79.464 14 92 26.536 92 42V50" stroke="#E8F7FF" stroke-width="7" stroke-linecap="round"/>
   <path d="M30 73C35.5 67 41 79 46.5 73C52 67 57.5 79 63 73C68.5 67 74 79 79.5 73C85 67 90.5 79 96 73" stroke="#2A6D95" stroke-width="5" stroke-linecap="round"/>
