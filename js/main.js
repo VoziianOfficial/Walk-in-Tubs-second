@@ -25,9 +25,6 @@ const MOBILE_BREAKPOINT = 1024;
 
 let lastFocusedBeforeMenuOpen = null;
 
-/* =========================
-   UTILITIES
-========================= */
 function lockBodyScroll() {
     body.classList.add("menu-open");
 }
@@ -59,9 +56,6 @@ function getFocusableElements(container) {
     });
 }
 
-/* =========================
-   HEADER / PROGRESS
-========================= */
 function updateHeaderState() {
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 16);
@@ -77,9 +71,6 @@ function updateProgressBar() {
     progressBar.style.width = `${Math.min(Math.max(progress, 0), 100)}%`;
 }
 
-/* =========================
-   MOBILE MENU
-========================= */
 function setMobileMenuInitialState() {
     if (!mobileMenu || !navToggle) return;
 
@@ -215,9 +206,6 @@ function initMobileMenu() {
     });
 }
 
-/* =========================
-   THEME TOGGLE
-========================= */
 function getSavedTheme() {
     try {
         return localStorage.getItem(THEME_STORAGE_KEY);
@@ -230,8 +218,7 @@ function saveTheme(theme) {
     try {
         localStorage.setItem(THEME_STORAGE_KEY, theme);
     } catch {
-        /* ignore */
-    }
+        }
 }
 
 function getPreferredTheme() {
@@ -275,9 +262,6 @@ function initThemeToggle() {
     });
 }
 
-/* =========================
-   COOKIE CONSENT
-========================= */
 function getCookieConsent() {
     try {
         return localStorage.getItem(COOKIE_STORAGE_KEY);
@@ -290,8 +274,7 @@ function setCookieConsent(value) {
     try {
         localStorage.setItem(COOKIE_STORAGE_KEY, value);
     } catch {
-        /* ignore */
-    }
+        }
 }
 
 function showCookieBanner() {
@@ -330,9 +313,6 @@ function initCookieBanner() {
     });
 }
 
-/* =========================
-   FAQ
-========================= */
 function closeFaqItem(item) {
     if (!item) return;
 
@@ -386,9 +366,6 @@ function initFaqAccordion() {
     });
 }
 
-/* =========================
-   REVEAL
-========================= */
 function initRevealObserver() {
     if (!revealItems.length) return;
 
@@ -424,9 +401,6 @@ function initRevealObserver() {
     revealItems.forEach((item) => observer.observe(item));
 }
 
-/* =========================
-   EVENTS
-========================= */
 function handleGlobalKeydown(event) {
     if (event.key === "Escape") {
         closeMobileMenu();
@@ -441,9 +415,6 @@ function handleScroll() {
     updateProgressBar();
 }
 
-/* =========================
-   PAGE READY
-========================= */
 function initPageScript() {
     const page = body.dataset.page;
     if (!page) return;
@@ -455,9 +426,6 @@ function initPageScript() {
     window.dispatchEvent(event);
 }
 
-/* =========================
-   GSAP SAFE INIT
-========================= */
 function initGsapDefaults() {
     if (!window.gsap) return;
 
@@ -466,9 +434,6 @@ function initGsapDefaults() {
     });
 }
 
-/* =========================
-   INIT
-========================= */
 function init() {
     initThemeToggle();
 

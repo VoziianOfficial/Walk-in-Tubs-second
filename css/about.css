@@ -1,10 +1,3 @@
-/* =========================
-   ABOUT PAGE
-========================= */
-
-/* =========================
-   HERO
-========================= */
 .about-hero {
     position: relative;
     padding-top: clamp(2rem, 3vw, 3rem);
@@ -195,9 +188,6 @@ html[data-theme="dark"] .about-hero {
     line-height: 1.5;
 }
 
-/* =========================
-   STORY
-========================= */
 .about-story__layout {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
@@ -259,9 +249,6 @@ html[data-theme="dark"] .about-hero {
     box-shadow: var(--shadow-xs);
 }
 
-/* =========================
-   CLARITY
-========================= */
 .about-clarity__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -323,9 +310,6 @@ html[data-theme="dark"] .about-hero {
     opacity: 0.65;
 }
 
-/* =========================
-   GALLERY
-========================= */
 .about-gallery {
     overflow: clip;
 }
@@ -380,9 +364,6 @@ html[data-theme="dark"] .about-hero {
     transform: scale(1.06);
 }
 
-/* =========================
-   PROCESS
-========================= */
 .about-process__grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -418,9 +399,6 @@ html[data-theme="dark"] .about-hero {
     font-weight: 800;
 }
 
-/* =========================
-   VALUE PANEL
-========================= */
 .about-value__panel {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(300px, 0.95fr);
@@ -472,9 +450,6 @@ html[data-theme="dark"] .about-hero {
     border: 1px solid rgba(255, 255, 255, 0.55);
 }
 
-/* =========================
-   IMPRESSIONS
-========================= */
 .about-impressions__grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -509,9 +484,6 @@ html[data-theme="dark"] .about-hero {
     font-size: 0.98rem;
 }
 
-/* =========================
-   CTA
-========================= */
 .about-cta__panel {
     position: relative;
     overflow: hidden;
@@ -566,9 +538,6 @@ html[data-theme="dark"] .about-hero {
     justify-content: flex-end;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 1180px) {
 
     .about-hero__layout,

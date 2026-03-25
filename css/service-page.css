@@ -1,10 +1,3 @@
-/* =========================
-   SERVICE PAGES
-========================= */
-
-/* =========================
-   HERO
-========================= */
 .service-hero {
     position: relative;
     isolation: isolate;
@@ -208,9 +201,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* =========================
-   GENERIC SERVICE SECTION
-========================= */
 .service-section {
     position: relative;
 }
@@ -219,9 +209,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     max-width: 780px;
 }
 
-/* =========================
-   SPLIT BLOCK
-========================= */
 .service-split {
     display: grid;
     grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
@@ -271,9 +258,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     line-height: 1.55;
 }
 
-/* =========================
-   DETAIL CARD GRID
-========================= */
 .service-card-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -326,9 +310,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     max-width: 32ch;
 }
 
-/* =========================
-   FACTOR PANEL
-========================= */
 .service-factor-panel {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(230px, 0.9fr);
@@ -405,9 +386,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     font-weight: 700;
 }
 
-/* =========================
-   RELATED GRID
-========================= */
 .related-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -490,9 +468,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     text-underline-offset: 0.18em;
 }
 
-/* =========================
-   CTA PANEL
-========================= */
 .service-cta {
     padding-top: clamp(2.5rem, 4vw, 3.5rem);
 }
@@ -551,9 +526,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     justify-content: flex-end;
 }
 
-/* =========================
-   FAQ
-========================= */
 .faq-section {
     padding-bottom: clamp(4rem, 5vw, 5rem);
 }
@@ -622,9 +594,6 @@ body[data-service-bg="catalog-3"] .service-hero {
     max-width: 72ch;
 }
 
-/* =========================
-   SMALL VARIANTS / VISUAL HELPERS
-========================= */
 .service-section:nth-of-type(even) .service-detail-card {
     background:
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 22%),
@@ -637,9 +606,6 @@ body[data-service-bg="catalog-3"] .service-hero {
         var(--gradient-panel);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 1180px) {
 
     .service-hero__layout,

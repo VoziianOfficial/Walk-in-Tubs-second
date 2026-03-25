@@ -6,11 +6,11 @@
 @import url("./service-page.css");
 
 :root {
-    --bg: #eceff3;
-    --bg-elevated: #f4f6f8;
-    --bg-soft: #e4e8ed;
-    --bg-muted: #d8dde4;
-    --surface-glass: rgba(240, 244, 248, 0.76);
+    --bg: #e2e6eb;
+    --bg-elevated: #edf1f5;
+    --bg-soft: #d6dce3;
+    --bg-muted: #c7ced7;
+    --surface-glass: rgba(227, 233, 240, 0.8);
 
     --text: #111214;
     --text-soft: #4a4c51;
@@ -109,11 +109,11 @@
 }
 
 html[data-theme="dark"] {
-    --bg: #0a0b0d;
-    --bg-elevated: #121418;
-    --bg-soft: #181b20;
-    --bg-muted: #22262c;
-    --surface-glass: rgba(16, 18, 21, 0.82);
+    --bg: #1a1d21;
+    --bg-elevated: #23272d;
+    --bg-soft: #2a2f36;
+    --bg-muted: #333942;
+    --surface-glass: rgba(24, 27, 31, 0.82);
 
     --text: #f5f5f6;
     --text-soft: #d0d2d6;
@@ -156,9 +156,6 @@ html[data-theme="dark"] {
         linear-gradient(145deg, #0d1014 0%, #131923 45%, #111720 100%);
 }
 
-/* =========================
-   RESET
-========================= */
 *,
 *::before,
 *::after {
@@ -270,9 +267,6 @@ i[class*=" fa-"] {
     flex-shrink: 0;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
 h1,
 h2,
 h3,
@@ -324,9 +318,6 @@ p {
     opacity: 0.45;
 }
 
-/* =========================
-   ACCESSIBILITY
-========================= */
 .skip-link {
     position: absolute;
     left: 1rem;
@@ -364,9 +355,6 @@ p {
     }
 }
 
-/* =========================
-   LAYOUT
-========================= */
 .site-shell {
     min-height: 100vh;
     width: 100%;
@@ -463,9 +451,6 @@ footer,
     grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-/* =========================
-   GLOBAL DECOR
-========================= */
 .site-progress {
     position: fixed;
     inset: 0 auto auto 0;
@@ -495,9 +480,6 @@ footer,
     pointer-events: none;
 }
 
-/* =========================
-   BUTTONS
-========================= */
 .button {
     --button-bg: var(--bg-elevated);
     --button-color: var(--text);
@@ -616,9 +598,6 @@ footer,
     transform: translateX(4px);
 }
 
-/* =========================
-   HEADER
-========================= */
 .site-header {
     position: sticky;
     top: 0;
@@ -655,9 +634,6 @@ footer,
     min-height: var(--header-height-scrolled);
 }
 
-/* =========================
-   LOGO
-========================= */
 .site-logo {
     display: inline-flex;
     align-items: center;
@@ -783,9 +759,6 @@ footer,
     color: var(--icon-fg);
 }
 
-/* =========================
-   HEADER ACTIONS
-========================= */
 .site-header__actions {
     display: flex;
     align-items: center;
@@ -828,14 +801,10 @@ footer,
     box-shadow: var(--shadow-sm), var(--shadow-inset);
 }
 
-/* =========================
-   DESKTOP NAV
-========================= */
 .site-nav {
     margin-left: auto;
 }
 
-/* Centered header nav on key marketing pages */
 @media (min-width: 1025px) {
     body[data-page="home"] .site-header__inner,
     body[data-page="services"] .site-header__inner,
@@ -900,9 +869,6 @@ footer,
     transform: scaleX(1);
 }
 
-/* =========================
-   BURGER
-========================= */
 .nav-toggle {
     display: none;
     position: relative;
@@ -922,9 +888,6 @@ footer,
     transform: rotate(90deg);
 }
 
-/* =========================
-   MOBILE MENU
-========================= */
 .mobile-menu {
     position: fixed;
     inset: 0;
@@ -1396,9 +1359,6 @@ footer,
  
 
 
-/* =========================
-   SWIPER FIXES
-========================= */
 .home-rail,
 .services-rail {
     overflow: hidden;
@@ -1427,9 +1387,6 @@ footer,
     height: auto;
 }
 
-/* =========================
-   CARDS / PANELS / MEDIA
-========================= */
 .hero-panel,
 .info-card,
 .service-card,
@@ -1648,9 +1605,6 @@ html[data-theme="dark"] .nav-toggle {
     font-size: 1.28rem;
 }
 
-/* =========================
-   FORMS
-========================= */
 form {
     display: grid;
     gap: 0.95rem;
@@ -1726,9 +1680,6 @@ select {
     color: var(--text-muted);
 }
 
-/* =========================
-   FAQ / ACCORDION
-========================= */
 .faq-list {
     display: grid;
     gap: 1rem;
@@ -1804,9 +1755,6 @@ select {
     max-width: 72ch;
 }
 
-/* =========================
-   COVERAGE MAP
-========================= */
 .coverage-map-card,
 .contact-map__card {
     position: relative;
@@ -1843,15 +1791,12 @@ select {
     filter: grayscale(0.12) contrast(1.04) brightness(0.98);
 }
 
-/* =========================
-   FOOTER
-========================= */
 .site-footer {
     position: relative;
     padding: 4rem 0 1.5rem;
     background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 22%),
-        linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 92%, transparent) 0%, color-mix(in srgb, var(--bg-muted) 92%, transparent) 100%),
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 22%),
+        linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 70%, transparent) 0%, color-mix(in srgb, var(--bg-muted) 64%, transparent) 100%),
         url("../assets/images/home/footer-bag.jpg") center / cover no-repeat;
     border-top: 1px solid var(--line);
 }
@@ -1963,9 +1908,6 @@ html[data-theme="dark"] .site-footer {
     font-weight: 600;
 }
 
-/* =========================
-   COOKIE BANNER
-========================= */
 .cookie-banner {
     position: fixed;
     inset: auto 1rem 1rem 1rem;
@@ -2032,9 +1974,6 @@ html[data-theme="dark"] .site-footer {
     margin-top: 1rem;
 }
 
-/* =========================
-   THEME TOGGLE
-========================= */
 .theme-toggle {
     position: relative;
 }
@@ -2064,9 +2003,6 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
     transform: scale(1);
 }
 
-/* =========================
-   REVEAL
-========================= */
 [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
@@ -2090,9 +2026,6 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
     transform: translate(0, 0);
 }
 
-/* =========================
-   UTILITIES
-========================= */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -2105,9 +2038,6 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
     border: 0;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 1180px) {
     .site-footer__navs {
         grid-template-columns: repeat(2, minmax(0, 1fr));

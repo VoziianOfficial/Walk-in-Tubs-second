@@ -1,10 +1,3 @@
-/* =========================
-   HOME PAGE
-========================= */
-
-/* =========================
-   HERO
-========================= */
 .hero-section {
     position: relative;
     padding-top: clamp(2rem, 3vw, 3rem);
@@ -186,9 +179,6 @@ html[data-theme="dark"] .hero-section {
     letter-spacing: -0.02em;
 }
 
-/* =========================
-   BENEFITS
-========================= */
 .benefits-section {
     padding-top: clamp(2.7rem, 3vw, 3.5rem);
 }
@@ -207,9 +197,6 @@ html[data-theme="dark"] .hero-section {
     padding: 1.45rem;
 }
 
-/* =========================
-   SERVICES FEATURED
-========================= */
 .services-preview {
     overflow: clip;
 }
@@ -310,9 +297,6 @@ html[data-theme="dark"] .hero-section {
     line-height: 1.5;
 }
 
-/* =========================
-   SWIPER RAIL
-========================= */
 .home-rail {
     overflow: clip;
 }
@@ -427,9 +411,6 @@ html[data-theme="dark"] .hero-section {
     overflow: hidden;
 }
 
-/* =========================
-   PROCESS
-========================= */
 .process-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -460,9 +441,6 @@ html[data-theme="dark"] .hero-section {
     font-weight: 800;
 }
 
-/* =========================
-   TESTIMONIALS
-========================= */
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -513,9 +491,6 @@ html[data-theme="dark"] .hero-section {
     font-size: 0.9rem;
 }
 
-/* =========================
-   COVERAGE
-========================= */
 .coverage-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(160px, 0.34fr);
@@ -530,9 +505,6 @@ html[data-theme="dark"] .hero-section {
     padding: 1rem;
 }
 
-/* =========================
-   CTA
-========================= */
 .cta-section {
     padding-top: clamp(3rem, 4vw, 4rem);
 }
@@ -591,9 +563,6 @@ html[data-theme="dark"] .hero-section {
     justify-content: flex-end;
 }
 
-/* =========================
-   FAQ
-========================= */
 .faq-section {
     padding-bottom: clamp(4rem, 5vw, 5rem);
 }
@@ -602,9 +571,6 @@ html[data-theme="dark"] .hero-section {
     max-width: 940px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 1180px) {
     .hero-section__grid {
         grid-template-columns: 1fr;

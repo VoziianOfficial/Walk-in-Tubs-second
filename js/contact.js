@@ -342,9 +342,6 @@ function createContactReveal(gsap, elements, options = {}) {
     );
 }
 
-/* =========================
-   FORM + MODAL
-========================= */
 function initContactForm() {
     const form = document.getElementById("contact-form");
     if (!form) return;
