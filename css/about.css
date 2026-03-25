@@ -6,8 +6,26 @@
    HERO
 ========================= */
 .about-hero {
+    position: relative;
     padding-top: clamp(2rem, 3vw, 3rem);
     overflow: clip;
+    --about-hero-overlay:
+        linear-gradient(180deg,
+            rgba(245, 245, 246, 0.92) 0%,
+            rgba(245, 245, 246, 0.78) 34%,
+            rgba(245, 245, 246, 0.24) 70%,
+            rgba(245, 245, 246, 0) 100%);
+    background:
+        var(--about-hero-overlay),
+        url("../assets/images/about/about-hero-fons.jpg") center / cover no-repeat;
+}
+
+html[data-theme="dark"] .about-hero {
+    --about-hero-overlay:
+        linear-gradient(180deg,
+            rgba(14, 15, 17, 0.86) 0%,
+            rgba(14, 15, 17, 0.62) 40%,
+            rgba(14, 15, 17, 0.28) 100%);
 }
 
 .about-hero::before {
@@ -495,8 +513,8 @@
     padding: clamp(1.55rem, 3vw, 2.3rem);
     border-radius: 34px;
     background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 24%),
-        linear-gradient(135deg, #0f1012 0%, #1a1c20 100%);
+        linear-gradient(135deg, rgba(10, 12, 15, 0.86) 0%, rgba(10, 12, 15, 0.62) 45%, rgba(10, 12, 15, 0.42) 100%),
+        url("../assets/images/about/about-fons.jpg") center / cover no-repeat;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: var(--shadow-lg);
 }

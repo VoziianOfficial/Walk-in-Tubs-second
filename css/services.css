@@ -6,8 +6,26 @@
    HERO
 ========================= */
 .services-hero {
+    position: relative;
     padding-top: clamp(2rem, 3vw, 3rem);
     overflow: clip;
+    --services-hero-overlay:
+        linear-gradient(180deg,
+            rgba(245, 245, 246, 0.92) 0%,
+            rgba(245, 245, 246, 0.78) 34%,
+            rgba(245, 245, 246, 0.24) 70%,
+            rgba(245, 245, 246, 0) 100%);
+    background:
+        var(--services-hero-overlay),
+        url("../assets/images/services/services-hero.jpg") center / cover no-repeat;
+}
+
+html[data-theme="dark"] .services-hero {
+    --services-hero-overlay:
+        linear-gradient(180deg,
+            rgba(14, 15, 17, 0.86) 0%,
+            rgba(14, 15, 17, 0.62) 40%,
+            rgba(14, 15, 17, 0.28) 100%);
 }
 
 .services-hero::before {
@@ -24,7 +42,7 @@
 
 .services-hero__layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: clamp(1.5rem, 3vw, 3rem);
     align-items: center;
 }
@@ -153,9 +171,12 @@
 
 .services-catalog__grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: 1.35rem;
-    grid-auto-rows: 300px;
+    grid-auto-rows: 1fr;
+    min-height: clamp(560px, 60vh, 760px);
+    align-items: stretch;
 }
 
 .services-showcase-card {

@@ -6,8 +6,26 @@
    HERO
 ========================= */
 .contact-hero {
+    position: relative;
     padding-top: clamp(2rem, 3vw, 3rem);
     overflow: clip;
+    --contact-hero-overlay:
+        linear-gradient(180deg,
+            rgba(245, 245, 246, 0.92) 0%,
+            rgba(245, 245, 246, 0.78) 34%,
+            rgba(245, 245, 246, 0.24) 70%,
+            rgba(245, 245, 246, 0) 100%);
+    background:
+        var(--contact-hero-overlay),
+        url("../assets/images/contact/contact-hero-fons.jpg") center / cover no-repeat;
+}
+
+html[data-theme="dark"] .contact-hero {
+    --contact-hero-overlay:
+        linear-gradient(180deg,
+            rgba(14, 15, 17, 0.86) 0%,
+            rgba(14, 15, 17, 0.62) 40%,
+            rgba(14, 15, 17, 0.28) 100%);
 }
 
 .contact-hero::before {
@@ -31,12 +49,12 @@
 
 .contact-hero__visual {
     position: relative;
-    min-height: 680px;
+    min-height: 0;
 }
 
 .contact-hero__image {
-    min-height: 680px;
-    height: 100%;
+    min-height: 0;
+    height: auto;
     overflow: hidden;
     border-radius: 38px;
     box-shadow: var(--shadow-lg);
@@ -65,8 +83,9 @@
 
 .contact-hero__image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    object-position: center;
     transform: scale(1.02);
     transition: transform 1.15s ease;
 }
