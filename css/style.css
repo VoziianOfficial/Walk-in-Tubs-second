@@ -1810,8 +1810,16 @@ select {
     padding: 4rem 0 1.5rem;
     background:
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 22%),
-        linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 92%, transparent) 0%, color-mix(in srgb, var(--bg-muted) 92%, transparent) 100%);
+        linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 92%, transparent) 0%, color-mix(in srgb, var(--bg-muted) 92%, transparent) 100%),
+        url("../assets/images/home/footer-bag.jpg") center / cover no-repeat;
     border-top: 1px solid var(--line);
+}
+
+html[data-theme="dark"] .site-footer {
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 22%),
+        linear-gradient(180deg, rgba(10, 12, 15, 0.86) 0%, rgba(10, 12, 15, 0.72) 100%),
+        url("../assets/images/home/footer-bag.jpg") center / cover no-repeat;
 }
 
 .site-footer__top {

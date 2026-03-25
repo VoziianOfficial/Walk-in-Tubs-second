@@ -6,8 +6,26 @@
    HERO
 ========================= */
 .hero-section {
+    position: relative;
     padding-top: clamp(2rem, 3vw, 3rem);
     overflow: clip;
+    --home-hero-overlay:
+        linear-gradient(180deg,
+            rgba(245, 245, 246, 0.92) 0%,
+            rgba(245, 245, 246, 0.78) 32%,
+            rgba(245, 245, 246, 0.28) 68%,
+            rgba(245, 245, 246, 0) 100%);
+    background:
+        var(--home-hero-overlay),
+        url("../assets/images/home/home-hero.jpg") center / cover no-repeat;
+}
+
+html[data-theme="dark"] .hero-section {
+    --home-hero-overlay:
+        linear-gradient(180deg,
+            rgba(14, 15, 17, 0.86) 0%,
+            rgba(14, 15, 17, 0.62) 38%,
+            rgba(14, 15, 17, 0.3) 100%);
 }
 
 .hero-section::before {
@@ -25,7 +43,7 @@
 .hero-section__grid {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: clamp(1.5rem, 3vw, 3rem);
     align-items: center;
 }
@@ -512,8 +530,8 @@
     padding: clamp(1.55rem, 3vw, 2.3rem);
     border-radius: 34px;
     background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 24%),
-        linear-gradient(135deg, #0f1012 0%, #1a1c20 100%);
+        linear-gradient(135deg, rgba(10, 12, 15, 0.86) 0%, rgba(10, 12, 15, 0.62) 45%, rgba(10, 12, 15, 0.42) 100%),
+        url("../assets/images/home/footer-img.jpg") center / cover no-repeat;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: var(--shadow-lg);
 }
